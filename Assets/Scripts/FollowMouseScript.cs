@@ -8,6 +8,7 @@ public class FollowMouseScript : MonoBehaviour {
     [SerializeField] private GameObject trap_holder;
     [SerializeField] private Transform[] points;
     [SerializeField] private ParticleSystem mouse_particle;
+    [SerializeField] private Animator mouse_animator;
 
     void Start() {
         InvokeRepeating(nameof(SpawnTrap), 3.0f, 3f);
@@ -41,6 +42,7 @@ public class FollowMouseScript : MonoBehaviour {
     public void SetMouseToStun() {
         //stun !
         isStunned = true;
+        mouse_animator.Play("Mouse_get_stuned");
         rigidbody.velocity *= 0.1f;
         Invoke(nameof(RemoveMouseStun), 2.0f);
     }
