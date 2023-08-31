@@ -32,14 +32,13 @@ public class FollowMouseScript : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col) {
         var obj = col.gameObject;
 
-        Debug.Log(obj.tag);
-
         if (obj.CompareTag("roomLock")) {
             cheeseCounter = obj.GetComponent<RoomLockScript>().AddCheese(cheeseCounter);
         }
         else if (obj.CompareTag("cheese") && cheeseCounter < 3) {
             obj.transform.SetParent(transform, false);
             obj.transform.position = transform.position;
+            obj.GetComponent<CircleCollider2D>().enabled = false;
             cheeseCounter++;
         }
 

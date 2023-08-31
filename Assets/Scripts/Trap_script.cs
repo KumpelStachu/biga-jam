@@ -22,7 +22,7 @@ public class Trap_script : MonoBehaviour {
         if (col.gameObject.CompareTag("Mouse") && is_ready == true) {
             followMouseScript.SetMouseToStun();
             trap_animator.Play("Mouse_trap_turn_on");
-            Invoke("DestroyTrap", 1f);
+            Invoke(nameof(DestroyTrap), 1f);
         }
     }
 
