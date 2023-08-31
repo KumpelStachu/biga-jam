@@ -8,10 +8,25 @@ using TMPro;
 public class FollowMouseScript : MonoBehaviour {
     [SerializeField] private new Rigidbody2D rigidbody;
     [SerializeField] private float speed = 1;
+<<<<<<< HEAD
+    [SerializeField] private int cheese_counter = 0;
+    [SerializeField] private float distance = 10.05f;
+    [SerializeField] private GameObject cheese_holder;
+    [SerializeField] private GameObject trap_holder;
+    [SerializeField] private bool is_stuned;
+    [SerializeField] private Transform[] points;
+
+    void Start() {
+        InvokeRepeating("SpawnTrap", 3.0f, 3f);
+    }
+
+    void Update() {
+=======
     [SerializeField] private int cheeseCounter = 0;
     [SerializeField] private bool isStuned;
 
     void FixedUpdate() {
+>>>>>>> 09e601119b297e31e055617e2b3f9d40911b81ff
         var mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (isStuned) return;
@@ -46,5 +61,11 @@ public class FollowMouseScript : MonoBehaviour {
     }
     public void RemoveMouseStun() {
         isStuned = false;
+    }
+    public void SpawnTrap()
+    {
+        int rand_num = Random.Range(0,4);
+        GameObject trap_object = Instantiate(trap_holder, points[rand_num].position, points[rand_num].transform.rotation);
+        
     }
 }

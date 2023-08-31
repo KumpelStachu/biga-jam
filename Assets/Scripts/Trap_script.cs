@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Trap_script : MonoBehaviour
 {
-    [SerializeField] public FollowMouseScript followMouseScript;
+    [SerializeField] private FollowMouseScript followMouseScript;
+    [SerializeField] private float trap_cooldown;
+    [SerializeField] private bool is_ready;
     void Start()
     {
-        
+        followMouseScript = GameObject.FindGameObjectWithTag("Mouse").GetComponent<FollowMouseScript>();
+        Invoke("SetCoolDownOff", trap_cooldown);
     }
 
     
@@ -16,11 +19,15 @@ public class Trap_script : MonoBehaviour
         
     }
     void OnTriggerEnter2D(Collider2D col) {
-        if(col.gameObject.tag == "Mouse")
+        if(col.gameObject.tag == "Mouse" && is_ready == true)
         {
             followMouseScript.SetMouseToStun();
             Destroy(gameObject);
         }
        
+    }
+    void SetCoolDownOff()
+    {
+        is_ready = true;
     }
 }
