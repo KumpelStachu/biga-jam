@@ -10,9 +10,10 @@ public class FollowMouseScript : MonoBehaviour {
     [SerializeField] private int cheese_counter = 0;
     [SerializeField] private float distance = 10.05f;
     [SerializeField] private GameObject cheese_holder;
+    [SerializeField] private bool is_stuned;
 
     void Start() {
-
+        
     }
 
     void Update() {
@@ -20,20 +21,34 @@ public class FollowMouseScript : MonoBehaviour {
 
         if (Vector3.Distance(transform.position, mouse) < distance) return;
 
+        if(is_stuned == false){
+
+        
         if (Input.GetMouseButton(0)) {
             transform.position = Vector2.MoveTowards(transform.position, mouse, speed * Time.deltaTime * (Input.GetKey(KeyCode.Space) ? 3 : 1));
         }
 
         Quaternion rotation = Quaternion.LookRotation(mouse - transform.position, transform.TransformDirection(Vector3.back));
         transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-        if (cheese_counter < 3) {
+        if (cheese_counter < 3 && col.gameObject.tag == "cheese") {
             cheese_holder = col.gameObject;
             cheese_holder.transform.SetParent(transform, false);
             cheese_holder.transform.position = transform.position;
             cheese_counter++;
         }
+    }
+    public void SetMouseToStun()
+    {
+        //stun !
+        is_stuned = true;
+        Invoke("RemoveMouseStun", 2.0f);
+    }
+    public void RemoveMouseStun()
+    {
+        is_stuned = false;
     }
 }
