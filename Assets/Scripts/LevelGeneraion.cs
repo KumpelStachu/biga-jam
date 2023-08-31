@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class LevelGeneraion : MonoBehaviour {
     [SerializeField] private GameObject[] roomPrefabs;
+    [SerializeField] private Vector2 worldSize = new(10, 10);
+    [SerializeField] private int numberOfRooms = 20;
 
-    Vector2 worldSize = new(4, 4);
-    Room[,] rooms;
+    private Room[,] rooms;
     readonly List<Vector2> takenPositions = new();
-    int gridSizeX, gridSizeY, numberOfRooms = 20;
+    private int gridSizeX, gridSizeY;
 
     void Start() {
         if (numberOfRooms >= worldSize.x * 2 * worldSize.y * 2) {
@@ -68,9 +69,6 @@ public class LevelGeneraion : MonoBehaviour {
 
                 if (x + 1 >= gridSizeX * 2) rooms[x, y].doorRight = false;
                 else rooms[x, y].doorRight = (rooms[x + 1, y] != null);
-
-                var room = rooms[x, y];
-                Debug.Log(room);
             }
         }
     }
@@ -86,6 +84,7 @@ public class LevelGeneraion : MonoBehaviour {
             roomScript.DoorBottom = room.doorBottom;
             roomScript.DoorRight = room.doorRight;
             roomScript.DoorLeft = room.doorLeft;
+            roomScript.Locked = room.type != 0;
         }
     }
 

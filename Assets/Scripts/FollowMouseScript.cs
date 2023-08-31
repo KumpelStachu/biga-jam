@@ -30,13 +30,18 @@ public class FollowMouseScript : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-        if (cheeseCounter >= 3) return;
-        if (!col.gameObject.CompareTag("cheese")) return;
+        var obj = col.gameObject;
 
-        var cheese = col.gameObject;
-        cheese.transform.SetParent(transform, false);
-        cheese.transform.position = transform.position;
-        cheeseCounter++;
+        Debug.Log(obj.tag);
+
+        if (obj.CompareTag("roomLock")) {
+            cheeseCounter = obj.GetComponent<RoomLockScript>().AddCheese(cheeseCounter);
+        }
+        else if (obj.CompareTag("cheese") && cheeseCounter < 3) {
+            obj.transform.SetParent(transform, false);
+            obj.transform.position = transform.position;
+            cheeseCounter++;
+        }
 
     }
     public void SetMouseToStun() {
