@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -159,7 +160,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -176,7 +177,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 0.1
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -207,6 +208,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea6e1b8b577111469ff42267619bfa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouse: {fileID: 2085953185}
+  offset: {x: 0, y: 0, z: -10}
+  smoothTime: 0.25
 --- !u!1 &1202233604
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +255,7 @@ MonoBehaviour:
   roomPrefabs:
   - {fileID: 7766327084467649865, guid: dede5b0d1f84279459f818ba710eeb7b, type: 3}
   - {fileID: 7766327084467649865, guid: dd5182d877fa1a5438454f7d62111136, type: 3}
+  cheesePrefab: {fileID: 0}
 --- !u!4 &1202233606
 Transform:
   m_ObjectHideFlags: 0
@@ -5164,7 +5181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085953185}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.22, y: -0.9, z: 0}
+  m_LocalPosition: {x: 0, y: -0.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
