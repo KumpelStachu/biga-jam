@@ -10,13 +10,16 @@ public class RoomScript : MonoBehaviour {
     [SerializeField] private GameObject wallLeft;
     [SerializeField] private GameObject wallRight;
     [SerializeField] private GameObject roomLock;
+    [Min(5)][SerializeField] private int minCheese = 5;
+    [Min(6)][SerializeField] private int maxCheese = 10;
+
 
     private GameManager gameManager;
     private int cheeseCount;
 
     void Start() {
         gameManager = FindObjectOfType<GameManager>();
-        cheeseCount = Random.Range(5, 9);
+        cheeseCount = Random.Range(minCheese, maxCheese);
 
         GenerateCheese();
     }
