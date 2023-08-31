@@ -11,7 +11,7 @@ public class FollowMouseScript : MonoBehaviour {
     [SerializeField] private Animator mouse_animator;
 
     void Start() {
-        InvokeRepeating(nameof(SpawnTrap), 3.0f, 3f);
+        InvokeRepeating(nameof(SpawnTrap), 3.0f, 4f);
     }
 
     void Update() {
