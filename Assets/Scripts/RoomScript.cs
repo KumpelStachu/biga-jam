@@ -16,7 +16,7 @@ public class RoomScript : MonoBehaviour {
 
     void Start() {
         gameManager = FindObjectOfType<GameManager>();
-        cheeseCount = Random.Range(3, 9);
+        cheeseCount = Random.Range(5, 9);
 
         GenerateCheese();
     }

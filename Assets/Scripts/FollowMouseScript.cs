@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class FollowMouseScript : MonoBehaviour {
@@ -22,8 +23,6 @@ public class FollowMouseScript : MonoBehaviour {
         Quaternion rotation = Quaternion.LookRotation(mouse - transform.position, transform.TransformDirection(Vector3.back));
         transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
 
-        if (isStunned) return;
-
         transform.position = Vector2.MoveTowards(transform.position, mouse, speed * Time.deltaTime);
         mouse_particle.Play();
 
@@ -34,6 +33,9 @@ public class FollowMouseScript : MonoBehaviour {
 
         if (obj.CompareTag("roomLock")) {
             cheeseCounter = obj.GetComponent<RoomLockScript>().AddCheese(cheeseCounter);
+
+            foreach (var item in GetComponentsInChildren<Transform>().Where(child => child.CompareTag("cheese")).Take(3 - cheeseCounter))
+                Destroy(item.gameObject);
         }
         else if (obj.CompareTag("cheese") && cheeseCounter < 3) {
             obj.transform.SetParent(transform, false);
@@ -59,17 +61,5 @@ public class FollowMouseScript : MonoBehaviour {
         int rand_num = Random.Range(0, 4);
         GameObject trap_object = Instantiate(trap_holder, points[rand_num].position, points[rand_num].transform.rotation);
 
-    }
-    public void ClearCheese()
-    {
-        for (var i = transform.childCount - 1; i >= 0; i--)
-                {
-                    if(transform.GetChild(i).gameObject.tag == "cheese")
-                    {
-                        GameObject holder_child = transform.GetChild(i).gameObject;
-                        Destroy(holder_child);
-                    }
-                   
-                }
     }
 }

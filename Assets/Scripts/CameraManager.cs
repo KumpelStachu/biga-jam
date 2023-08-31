@@ -10,17 +10,16 @@ public class CameraManager : MonoBehaviour {
 
     private Vector3 currentVelocity;
     private float time;
-    private int level = 0;
 
     void LateUpdate() {
-        var size = 4;
+        var size = 5;
         time += Time.deltaTime * smoothTime;
 
         if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyUp(KeyCode.Z) || Input.GetKeyDown(KeyCode.X) || Input.GetKeyUp(KeyCode.X))
             time = 0;
 
-        if (Input.GetKey(KeyCode.X)) size = 10;
-        else if (Input.GetKey(KeyCode.Z)) size = 6;
+        if (Input.GetKey(KeyCode.X)) size = 11;
+        else if (Input.GetKey(KeyCode.Z)) size = 7;
 
         Camera.main.orthographicSize = Mathf.SmoothStep(Camera.main.orthographicSize, size, time);
 
