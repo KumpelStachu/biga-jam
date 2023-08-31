@@ -21,10 +21,11 @@ public class FollowMouseScript : MonoBehaviour {
         Quaternion rotation = Quaternion.LookRotation(mouse - transform.position, transform.TransformDirection(Vector3.back));
         transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
 
-        if (!isStunned && Input.GetMouseButton(0)) {
-            transform.position = Vector2.MoveTowards(transform.position, mouse, speed * Time.deltaTime);
-            mouse_particle.Play();
-        }
+        if (isStunned) return;
+
+        transform.position = Vector2.MoveTowards(transform.position, mouse, speed * Time.deltaTime);
+        mouse_particle.Play();
+
     }
 
     void OnTriggerEnter2D(Collider2D col) {
