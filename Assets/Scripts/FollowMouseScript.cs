@@ -21,7 +21,6 @@ public class FollowMouseScript : MonoBehaviour {
         if (isStunned) return;
 
         Quaternion rotation = Quaternion.LookRotation(mouse - transform.position, transform.TransformDirection(Vector3.back));
-        Debug.Log(rotation);
         transform.SetPositionAndRotation(Vector2.MoveTowards(transform.position, mouse, speed * Time.deltaTime), new Quaternion(0, 0, rotation.z, rotation.w));
 
         mouse_particle.Play();
