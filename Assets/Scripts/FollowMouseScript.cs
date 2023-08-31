@@ -7,6 +7,7 @@ public class FollowMouseScript : MonoBehaviour {
     [SerializeField] private bool isStunned;
     [SerializeField] private GameObject trap_holder;
     [SerializeField] private Transform[] points;
+    [SerializeField] private ParticleSystem mouse_particle;
 
     void Start() {
         InvokeRepeating(nameof(SpawnTrap), 3.0f, 3f);
@@ -22,6 +23,7 @@ public class FollowMouseScript : MonoBehaviour {
 
         if (!isStunned && Input.GetMouseButton(0)) {
             transform.position = Vector2.MoveTowards(transform.position, mouse, speed * Time.deltaTime);
+            mouse_particle.Play();
         }
     }
 
