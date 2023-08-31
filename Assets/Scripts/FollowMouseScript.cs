@@ -21,11 +21,10 @@ public class FollowMouseScript : MonoBehaviour {
         if (isStunned) return;
 
         Quaternion rotation = Quaternion.LookRotation(mouse - transform.position, transform.TransformDirection(Vector3.back));
-        transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
+        Debug.Log(rotation);
+        transform.SetPositionAndRotation(Vector2.MoveTowards(transform.position, mouse, speed * Time.deltaTime), new Quaternion(0, 0, rotation.z, rotation.w));
 
-        transform.position = Vector2.MoveTowards(transform.position, mouse, speed * Time.deltaTime);
         mouse_particle.Play();
-
     }
 
     void OnTriggerEnter2D(Collider2D col) {
@@ -50,7 +49,8 @@ public class FollowMouseScript : MonoBehaviour {
         isStunned = true;
         mouse_animator.Play("Mouse_get_stuned");
         rigidbody.velocity *= 0.1f;
-        Invoke(nameof(RemoveMouseStun), 2.0f);
+        CancelInvoke(nameof(RemoveMouseStun));
+        Invoke(nameof(RemoveMouseStun), 1.41f);
     }
 
     public void RemoveMouseStun() {

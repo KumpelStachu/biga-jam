@@ -4922,9 +4922,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followMouseScript: {fileID: 0}
-  trap_cooldown: 0.8
-  is_ready: 0
-  trap_animator: {fileID: 8797323217631707300}
+  trapCooldown: 0.8
+  trapSuicide: 5
+  isReady: 0
+  trapAnimator: {fileID: 8797323217631707300}
 --- !u!212 &8865616253303399058
 SpriteRenderer:
   m_ObjectHideFlags: 0

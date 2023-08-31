@@ -4,33 +4,36 @@ using UnityEngine;
 
 public class Trap_script : MonoBehaviour {
     [SerializeField] private FollowMouseScript followMouseScript;
-    [SerializeField] private float trap_cooldown;
-    [SerializeField] private bool is_ready;
-    [SerializeField] private Animator trap_animator;
+    [SerializeField] private float trapCooldown;
+    [SerializeField] private float trapSuicide;
+    [SerializeField] private bool isReady;
+    [SerializeField] private Animator trapAnimator;
 
     void Start() {
         followMouseScript = GameObject.FindGameObjectWithTag("Mouse").GetComponent<FollowMouseScript>();
-        Invoke(nameof(SetCoolDownOff), trap_cooldown);
-        trap_animator.Play("Mouse_trap_drop");
-    }
-
-    void Update() {
-
+        Invoke(nameof(SetCoolDownOff), trapCooldown);
+        Invoke(nameof(SuicideTrap), trapSuicide);
+        trapAnimator.Play("Mouse_trap_drop");
     }
 
     void OnTriggerStay2D(Collider2D col) {
-        if (col.gameObject.CompareTag("Mouse") && is_ready == true) {
+        if (col.gameObject.CompareTag("Mouse") && isReady == true) {
             followMouseScript.SetMouseToStun();
-            trap_animator.Play("Mouse_trap_turn_on");
+            trapAnimator.Play("Mouse_trap_turn_on");
             Invoke(nameof(DestroyTrap), 1f);
         }
     }
 
     void SetCoolDownOff() {
-        is_ready = true;
+        isReady = true;
     }
-    void DestroyTrap()
-    {
+
+    void SuicideTrap() {
+        trapAnimator.Play("Mouse_trap_turn_on");
+        Invoke(nameof(DestroyTrap), 0.25f);
+    }
+
+    void DestroyTrap() {
         Destroy(gameObject);
     }
 }
