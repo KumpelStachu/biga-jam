@@ -5232,6 +5232,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followMouseScript: {fileID: 2085953186}
+  trap_cooldown: 0
+  is_ready: 0
 --- !u!1 &2085953185
 GameObject:
   m_ObjectHideFlags: 0
@@ -5265,7 +5267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 2085953190}
-  speed: 1
+  speed: 2
   cheeseCounter: 0
   isStuned: 0
 --- !u!212 &2085953187
@@ -5375,7 +5377,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
