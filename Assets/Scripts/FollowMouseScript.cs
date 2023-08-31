@@ -60,4 +60,16 @@ public class FollowMouseScript : MonoBehaviour {
         GameObject trap_object = Instantiate(trap_holder, points[rand_num].position, points[rand_num].transform.rotation);
 
     }
+    public void ClearCheese()
+    {
+        for (var i = transform.childCount - 1; i >= 0; i--)
+                {
+                    if(transform.GetChild(i).gameObject.tag == "cheese")
+                    {
+                        GameObject holder_child = transform.GetChild(i).gameObject;
+                        Destroy(holder_child);
+                    }
+                   
+                }
+    }
 }
