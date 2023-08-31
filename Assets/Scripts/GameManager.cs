@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject cheesePrefab;
 
     void Start() {
-        GenerateRooms(0);
-        Debug.Log(GameObject.FindGameObjectsWithTag("cheese").Length);
+        //GenerateRooms(0);
+        //Debug.Log(GameObject.FindGameObjectsWithTag("cheese").Length);
     }
 
     void Update() {
