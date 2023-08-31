@@ -8,10 +8,16 @@ using TMPro;
 public class FollowMouseScript : MonoBehaviour {
     [SerializeField] private new Rigidbody2D rigidbody;
     [SerializeField] private float speed = 1;
-    [SerializeField] private int cheeseCounter = 0;
-    [SerializeField] private bool isStuned;
+    [SerializeField] private int cheese_counter = 0;
+    [SerializeField] private float distance = 10.05f;
+    [SerializeField] private GameObject cheese_holder;
+    [SerializeField] private bool is_stuned;
 
-    void FixedUpdate() {
+    void Start() {
+        
+    }
+
+    void Update() {
         var mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (isStuned) return;
@@ -41,10 +47,11 @@ public class FollowMouseScript : MonoBehaviour {
     }
     public void SetMouseToStun() {
         //stun !
-        isStuned = true;
-        Invoke(nameof(RemoveMouseStun), 2.0f);
+        is_stuned = true;
+        Invoke("RemoveMouseStun", 2.0f);
     }
-    public void RemoveMouseStun() {
-        isStuned = false;
+    public void RemoveMouseStun()
+    {
+        is_stuned = false;
     }
 }
