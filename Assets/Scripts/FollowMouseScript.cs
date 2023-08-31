@@ -1,21 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-using TMPro;
 
 public class FollowMouseScript : MonoBehaviour {
     [SerializeField] private new Rigidbody2D rigidbody;
     [SerializeField] private float speed = 1;
-    [SerializeField] private int cheese_counter = 0;
-    [SerializeField] private float distance = 10.05f;
-    [SerializeField] private GameObject cheese_holder;
-    [SerializeField] private bool is_stuned;
-
-    void Start() {
-        
-    }
+    [SerializeField] private int cheeseCounter = 0;
+    [SerializeField] private bool isStuned;
 
     void Update() {
         var mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -23,7 +12,7 @@ public class FollowMouseScript : MonoBehaviour {
         if (isStuned) return;
 
         if (Input.GetMouseButton(0)) {
-            var v = (transform.position - mouse) * speed * Time.deltaTime;
+            var v = speed * Time.deltaTime * (transform.position - mouse);
             rigidbody.velocity -= new Vector2(v.x, v.y);
             rigidbody.velocity.Normalize();
             //rigidbody.MovePosition(transform.position + mouse * speed * Time.deltaTime);
@@ -47,11 +36,12 @@ public class FollowMouseScript : MonoBehaviour {
     }
     public void SetMouseToStun() {
         //stun !
-        is_stuned = true;
-        Invoke("RemoveMouseStun", 2.0f);
+        isStuned = true;
+        rigidbody.velocity *= 0.1f;
+        Invoke(nameof(RemoveMouseStun), 2.0f);
     }
-    public void RemoveMouseStun()
-    {
-        is_stuned = false;
+
+    public void RemoveMouseStun() {
+        isStuned = false;
     }
 }
