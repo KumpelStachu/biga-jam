@@ -6,8 +6,14 @@ using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour {
 
     [SerializeField] private Animator menu_animator;
+
+    [SerializeField] private Animator mouse_animator;
+    [SerializeField] private Animator clouds_animator;
+
     public void ButtonStart() {
         menu_animator.Play("Main_menu");
+        mouse_animator.Play("Mouse_run");
+        clouds_animator.Play("Clouds_exit");
         Invoke("Start_game", 1.5f);
     }
 
