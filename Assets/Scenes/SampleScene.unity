@@ -5264,11 +5264,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f177be2dd28fe43931820b397414ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7.38
-  cheese_counter: 0
-  distance: 0.05
-  cheese_holder: {fileID: 0}
-  is_stuned: 0
+  rigidbody: {fileID: 2085953190}
+  speed: 1
+  cheeseCounter: 0
+  isStuned: 0
 --- !u!212 &2085953187
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5350,7 +5349,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0053395033, y: 0.010679364}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5361,7 +5360,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.893523, y: 1.8190248}
+  m_Size: {x: 1.0964258, y: 2.6519935}
   m_EdgeRadius: 0
 --- !u!50 &2085953190
 Rigidbody2D:
