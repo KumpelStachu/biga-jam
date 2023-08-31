@@ -5,13 +5,19 @@ public class FollowMouseScript : MonoBehaviour {
     [SerializeField] private float speed = 1;
     [SerializeField] private int cheeseCounter = 0;
     [SerializeField] private bool isStuned;
-
+    [SerializeField] private GameObject trap_holder;
+    [SerializeField] private Transform[] points;
+    
+    void Start()
+    {
+        InvokeRepeating("SpawnTrap", 3.0f, 3f);
+    }
     void Update() {
         var mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (isStuned) return;
 
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetMouseButton(0) && isStuned == false) {
             var v = speed * Time.deltaTime * (transform.position - mouse);
             rigidbody.velocity -= new Vector2(v.x, v.y);
             rigidbody.velocity.Normalize();
@@ -43,5 +49,11 @@ public class FollowMouseScript : MonoBehaviour {
 
     public void RemoveMouseStun() {
         isStuned = false;
+    }
+    public void SpawnTrap()
+    {
+        int rand_num = Random.Range(0,4);
+        GameObject trap_object = Instantiate(trap_holder, points[rand_num].position, points[rand_num].transform.rotation);
+        
     }
 }
