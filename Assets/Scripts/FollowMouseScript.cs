@@ -6,49 +6,45 @@ using static UnityEngine.GraphicsBuffer;
 using TMPro;
 
 public class FollowMouseScript : MonoBehaviour {
+    [SerializeField] private new Rigidbody2D rigidbody;
     [SerializeField] private float speed = 1;
-    [SerializeField] private int cheese_counter = 0;
-    [SerializeField] private float distance = 10.05f;
-    [SerializeField] private GameObject cheese_holder;
-    [SerializeField] private bool is_stuned;
+    [SerializeField] private int cheeseCounter = 0;
+    [SerializeField] private bool isStuned;
 
-    void Start() {
-        
-    }
-
-    void Update() {
+    void FixedUpdate() {
         var mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (Vector3.Distance(transform.position, mouse) < distance) return;
+        if (isStuned) return;
 
-        if(is_stuned == false){
-
-        
         if (Input.GetMouseButton(0)) {
-            transform.position = Vector2.MoveTowards(transform.position, mouse, speed * Time.deltaTime * (Input.GetKey(KeyCode.Space) ? 3 : 1));
+            var v = (transform.position - mouse) * speed * Time.deltaTime;
+            rigidbody.velocity -= new Vector2(v.x, v.y);
+            rigidbody.velocity.Normalize();
+            //rigidbody.MovePosition(transform.position + mouse * speed * Time.deltaTime);
+            //rigidbody.MovePosition(Vector2.MoveTowards(transform.position, mouse, speed * Time.deltaTime));
         }
 
         Quaternion rotation = Quaternion.LookRotation(mouse - transform.position, transform.TransformDirection(Vector3.back));
         transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
-        }
+
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-        if (cheese_counter < 3 && col.gameObject.tag == "cheese") {
-            cheese_holder = col.gameObject;
-            cheese_holder.transform.SetParent(transform, false);
-            cheese_holder.transform.position = transform.position;
-            cheese_counter++;
-        }
+        if (cheeseCounter >= 3) return;
+        if (!col.gameObject.CompareTag("cheese")) return;
+
+        var cheese = col.gameObject;
+        cheese.transform.SetParent(transform, false);
+        cheese.transform.position = transform.position;
+        cheeseCounter++;
+
     }
-    public void SetMouseToStun()
-    {
+    public void SetMouseToStun() {
         //stun !
-        is_stuned = true;
-        Invoke("RemoveMouseStun", 2.0f);
+        isStuned = true;
+        Invoke(nameof(RemoveMouseStun), 2.0f);
     }
-    public void RemoveMouseStun()
-    {
-        is_stuned = false;
+    public void RemoveMouseStun() {
+        isStuned = false;
     }
 }
