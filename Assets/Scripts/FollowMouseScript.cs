@@ -11,16 +11,18 @@ public class FollowMouseScript : MonoBehaviour {
 
         if (isStuned) return;
 
-        if (Input.GetMouseButton(0)) {
-            var v = speed * Time.deltaTime * (transform.position - mouse);
-            rigidbody.velocity -= new Vector2(v.x, v.y);
-            rigidbody.velocity.Normalize();
-            //rigidbody.MovePosition(transform.position + mouse * speed * Time.deltaTime);
-            //rigidbody.MovePosition(Vector2.MoveTowards(transform.position, mouse, speed * Time.deltaTime));
-        }
-
         Quaternion rotation = Quaternion.LookRotation(mouse - transform.position, transform.TransformDirection(Vector3.back));
         transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
+
+        if (Input.GetMouseButton(0)) {
+            //var v = (speed * Time.deltaTime * (transform.position - mouse)).normalized;
+            //rigidbody.velocity -= new Vector2(v.x, v.y);
+            //rigidbody.velocity.Normalize();
+            //rigidbody.MovePosition(transform.position - v);
+            //rigidbody.MovePosition(Vector2.MoveTowards(transform.position, mouse, speed * Time.deltaTime));
+            rigidbody.AddRelativeForce(speed * Time.deltaTime * Vector3.forward, ForceMode2D.Force);
+        }
+
 
     }
 
