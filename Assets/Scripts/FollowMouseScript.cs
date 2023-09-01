@@ -12,6 +12,8 @@ public class FollowMouseScript : MonoBehaviour {
     [SerializeField] private Animator mouse_animator;
     [SerializeField] private GameManager gameManagerScript;
 
+    public const int maxCheese = 3;
+
     void Start() {
         InvokeRepeating(nameof(SpawnTrap), 3.0f, 4f);
     }
@@ -33,10 +35,12 @@ public class FollowMouseScript : MonoBehaviour {
         if (obj.CompareTag("roomLock")) {
             cheeseCounter = obj.GetComponent<RoomLockScript>().AddCheese(cheeseCounter);
 
-            foreach (var item in GetComponentsInChildren<Transform>().Where(child => child.CompareTag("cheese")).Take(3 - cheeseCounter))
+            foreach (var item in GetComponentsInChildren<Transform>().Where(child => child.CompareTag("cheese")).Take(maxCheese - cheeseCounter))
                 Destroy(item.gameObject);
+
+            gameManagerScript.UpdateCheeseCounter();
         }
-        else if (obj.CompareTag("cheese") && cheeseCounter < 3) {
+        else if (obj.CompareTag("cheese") && cheeseCounter < maxCheese) {
             obj.transform.SetParent(transform, false);
             obj.transform.position = transform.position;
             obj.GetComponent<CircleCollider2D>().enabled = false;

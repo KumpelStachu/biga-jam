@@ -6202,8 +6202,6 @@ MonoBehaviour:
   cheeseTextHolder: {fileID: 382026584}
   scoreTextAnimator: {fileID: 1794124366}
   cheeseBarScript: {fileID: 317676519}
-  totalCheese: 0
-  remainingCheese: 0
 --- !u!4 &1202233606
 Transform:
   m_ObjectHideFlags: 0
@@ -6236,8 +6234,8 @@ MonoBehaviour:
   - {fileID: 7766327084467649865, guid: dd5182d877fa1a5438454f7d62111136, type: 3}
   - {fileID: 7766327084467649865, guid: f3e685830cdf75b40a2e3de7e881b96f, type: 3}
   - {fileID: 7766327084467649865, guid: 2d10bf4acd7baa645becc217a50f5c26, type: 3}
-  worldSize: {x: 10, y: 10}
-  numberOfRooms: 20
+  worldSize: {x: 15, y: 15}
+  numberOfRooms: 500
 --- !u!1 &1203524885
 GameObject:
   m_ObjectHideFlags: 0

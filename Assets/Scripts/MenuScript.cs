@@ -10,22 +10,19 @@ public class MenuScript : MonoBehaviour {
     [SerializeField] private Animator mouse_animator;
     [SerializeField] private Animator clouds_animator;
 
+    public void Start() {
+        Time.timeScale = 1.0f;
+    }
+
     public void ButtonStart() {
         menu_animator.Play("Main_menu");
         mouse_animator.Play("Mouse_run");
         clouds_animator.Play("Clouds_exit");
-        Invoke("Start_game", 1.5f);
+        Invoke(nameof(Start_game), 1.5f);
     }
 
-    public void ButtonOptions() {
-        SceneManager.LoadScene("OptionsScene");
-    }
-
-    public void ButtonExit() {
-        Application.Quit(69);
-    }
-    public void Start_game()
-    {
+    public void Start_game() {
+        //SceneManager.UnloadSceneAsync("MainScene");
         SceneManager.LoadScene("SampleScene");
     }
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LevelGeneraion : MonoBehaviour {
     [SerializeField] private GameObject[] roomPrefabs;
-    [SerializeField] private Vector2 worldSize = new(10, 10);
-    [SerializeField] private int numberOfRooms = 20;
+    [SerializeField] private Vector2 worldSize = new(100, 100);
+    [SerializeField] private int numberOfRooms = 200;
 
     private Room[,] rooms;
     readonly List<Vector2> takenPositions = new();
@@ -85,6 +85,8 @@ public class LevelGeneraion : MonoBehaviour {
             roomScript.DoorRight = room.doorRight;
             roomScript.DoorLeft = room.doorLeft;
             roomScript.Locked = room.type != 0;
+
+            if (room.type == 0) roomScript.GenerateCheese();
         }
     }
 

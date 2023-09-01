@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class RoomScript : MonoBehaviour {
     [SerializeField] private Transform[] spawnPoints;
@@ -12,22 +13,26 @@ public class RoomScript : MonoBehaviour {
     [SerializeField] private GameObject roomLock;
     [Min(5)][SerializeField] private int minCheese = 5;
     [Min(6)][SerializeField] private int maxCheese = 10;
+    [SerializeField] private float maxDistance = 20;
 
+    private GameObject mouse;
 
-    private GameManager gameManager;
-    private int cheeseCount;
+    public void Start() {
+        mouse = GameObject.FindGameObjectWithTag("Mouse");
+    }
 
-    void Start() {
-        gameManager = FindObjectOfType<GameManager>();
-        cheeseCount = Random.Range(minCheese, maxCheese);
+    public void OnDrawGizmos() {
+        if (Vector2.Distance(transform.position, mouse.transform.position) > maxDistance) return;
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, mouse.transform.position);
+    }
 
+    private void A() {
+        if (Vector2.Distance(transform.position, mouse.transform.position) > maxDistance) return;
         GenerateCheese();
     }
 
-    private void GenerateCheese() {
-        gameManager.totalCheese += cheeseCount;
-        gameManager.remainingCheese += cheeseCount;
-
+    public void GenerateCheese(int cheeseCount = 1) {
         foreach (var spawnPoint in spawnPoints.OrderBy(_ => Random.Range(0f, 1f)).Take(cheeseCount)) {
             var point = Instantiate(cheesePrefab, spawnPoint.localPosition, Quaternion.identity);
             point.transform.Rotate(0, 0, Random.Range(0f, 360f));
@@ -40,6 +45,14 @@ public class RoomScript : MonoBehaviour {
     public bool DoorLeft { set { wallLeft.SetActive(!value); } }
     public bool DoorRight { set { wallRight.SetActive(!value); } }
 
-    public bool Locked { set { roomLock.SetActive(value); } }
+    public bool Locked {
+        set {
+            roomLock.SetActive(value);
+            if (!value) {
+                GenerateCheese(Random.Range(minCheese, maxCheese));
+                InvokeRepeating(nameof(A), 10, 10);
+            }
+        }
+    }
 }
 
