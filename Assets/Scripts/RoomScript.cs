@@ -1,6 +1,5 @@
 using System.Linq;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class RoomScript : MonoBehaviour {
     [SerializeField] private Transform[] spawnPoints;

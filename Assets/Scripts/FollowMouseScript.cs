@@ -1,11 +1,12 @@
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class FollowMouseScript : MonoBehaviour {
     [SerializeField] private new Rigidbody2D rigidbody;
-    [SerializeField] private float speed = 1;
-    [SerializeField] private float dashMultiplier = 5;
-    [SerializeField] private float dashDuration = 2;
+    [SerializeField] private float speed = 300;
+    [SerializeField] private float dashMultiplier = 3;
+    [SerializeField] private float dashDuration = 1;
     [SerializeField] private int cheeseCounter = 0;
     [SerializeField] private bool isStunned;
     [SerializeField] private bool isDashing;
@@ -14,9 +15,10 @@ public class FollowMouseScript : MonoBehaviour {
     [SerializeField] private ParticleSystem mouse_particle;
     [SerializeField] private Animator mouse_animator;
     [SerializeField] private GameManager gameManagerScript;
-    [SerializeField] private float pointerDistance = 1.3f;
+    [SerializeField] private float pointerDistance = 0.1f;
 
     public const int maxCheese = 3;
+    private Vector2 moveDirection = Vector2.zero;
 
     void Start() {
         InvokeRepeating(nameof(SpawnTrap), 3, 4);
@@ -25,23 +27,38 @@ public class FollowMouseScript : MonoBehaviour {
     void Update() {
         if (isStunned) return;
 
-        var pointer = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
         mouse_particle.Play();
 
-        if (Vector2.Distance(pointer, transform.position) > pointerDistance)
-            transform.position = Vector2.MoveTowards(transform.position, pointer, speed * Time.deltaTime);
-
-        Quaternion rotation = Quaternion.LookRotation(pointer - transform.position, transform.TransformDirection(Vector3.back));
-        transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
-
         if (!isDashing && cheeseCounter == maxCheese && Input.GetKeyDown(KeyCode.Space)) {
-            //rigidbody.velocity = Vector2.MoveTowards(transform.position, pointer, dashSpeed) - new Vector2(transform.position.x, transform.position.y);
-            speed *= dashMultiplier;
             cheeseCounter = 0;
             isDashing = true;
             RemoveCheese();
             Invoke(nameof(CancelDashing), dashDuration);
+        }
+    }
+
+    private void FixedUpdate() {
+        if (isStunned) return;
+
+        var pointer = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if (isDashing) {
+            rigidbody.velocity = dashMultiplier * speed * Time.deltaTime * moveDirection;
+        }
+        else {
+            moveDirection = (new Vector2(pointer.x, pointer.y) - rigidbody.position).normalized;
+
+            if (Vector2.Distance(rigidbody.position, pointer) > pointerDistance) {
+                rigidbody.velocity = speed * Time.deltaTime * moveDirection;
+            }
+            else {
+                rigidbody.velocity = Vector2.zero;
+            }
+
+        }
+        if (moveDirection != Vector2.zero) {
+            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+            rigidbody.rotation = angle - 90;
         }
     }
 
@@ -71,7 +88,6 @@ public class FollowMouseScript : MonoBehaviour {
 
     public void CancelDashing() {
         isDashing = false;
-        speed /= dashMultiplier;
     }
 
     public void RemoveCheese(int value = maxCheese) {
@@ -82,7 +98,7 @@ public class FollowMouseScript : MonoBehaviour {
     public void SetMouseToStun() {
         isStunned = true;
         mouse_animator.Play("Mouse_get_stuned");
-        rigidbody.velocity *= 0.1f;
+        rigidbody.velocity = Vector2.zero;
         CancelInvoke(nameof(RemoveMouseStun));
         Invoke(nameof(RemoveMouseStun), 1.41f);
     }
