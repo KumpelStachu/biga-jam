@@ -10,6 +10,7 @@ public class FollowMouseScript : MonoBehaviour {
     [SerializeField] private Transform[] points;
     [SerializeField] private ParticleSystem mouse_particle;
     [SerializeField] private Animator mouse_animator;
+    [SerializeField] private GameManager gameManagerScript;
 
     void Start() {
         InvokeRepeating(nameof(SpawnTrap), 3.0f, 4f);
@@ -40,6 +41,10 @@ public class FollowMouseScript : MonoBehaviour {
             obj.transform.position = transform.position;
             obj.GetComponent<CircleCollider2D>().enabled = false;
             cheeseCounter++;
+            gameManagerScript.playerCheese++;
+            gameManagerScript.CheeseBarHeal();
+            gameManagerScript.UpdateCheeseCounter();
+            gameManagerScript.AddScore(10);
         }
 
     }
