@@ -17,10 +17,13 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private Animator scoreTextAnimator;
     [SerializeField] private CheeseBarScript cheeseBarScript;
 
+    private FollowMouseScript mouseScript;
+
     void Start() {
         playerScore = 0;
         playerCheese = 0;
         cheeseTextHolder.text = $"0/{FollowMouseScript.maxCheese}";
+        mouseScript = GameObject.FindGameObjectWithTag("Mouse").GetComponent<FollowMouseScript>();
         UpdateScore();
     }
 
@@ -45,6 +48,7 @@ public class GameManager : MonoBehaviour {
 
     public void GameOverShow() {
         GameOverHolder.SetActive(true);
+        mouseScript.SetMouseToStun();
         Time.timeScale = 0;
     }
 

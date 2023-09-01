@@ -11,11 +11,12 @@ public class FollowMouseScript : MonoBehaviour {
     [SerializeField] private ParticleSystem mouse_particle;
     [SerializeField] private Animator mouse_animator;
     [SerializeField] private GameManager gameManagerScript;
+    [SerializeField] private float pointerDistance = 1.3f;
 
     public const int maxCheese = 3;
 
     void Start() {
-        InvokeRepeating(nameof(SpawnTrap), 3.0f, 4f);
+        InvokeRepeating(nameof(SpawnTrap), 3, 4);
     }
 
     void Update() {
@@ -23,10 +24,13 @@ public class FollowMouseScript : MonoBehaviour {
 
         if (isStunned) return;
 
-        Quaternion rotation = Quaternion.LookRotation(mouse - transform.position, transform.TransformDirection(Vector3.back));
-        transform.SetPositionAndRotation(Vector2.MoveTowards(transform.position, mouse, speed * Time.deltaTime), new Quaternion(0, 0, rotation.z, rotation.w));
-
         mouse_particle.Play();
+
+        if (Vector2.Distance(mouse, transform.position) > pointerDistance)
+            transform.position = Vector2.MoveTowards(transform.position, mouse, speed * Time.deltaTime);
+
+        Quaternion rotation = Quaternion.LookRotation(mouse - transform.position, transform.TransformDirection(Vector3.back));
+        transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
     }
 
     void OnTriggerEnter2D(Collider2D col) {
@@ -53,7 +57,6 @@ public class FollowMouseScript : MonoBehaviour {
 
     }
     public void SetMouseToStun() {
-        //stun !
         isStunned = true;
         mouse_animator.Play("Mouse_get_stuned");
         rigidbody.velocity *= 0.1f;
@@ -66,8 +69,7 @@ public class FollowMouseScript : MonoBehaviour {
     }
 
     public void SpawnTrap() {
-        int rand_num = Random.Range(0, 4);
-        GameObject trap_object = Instantiate(trap_holder, points[rand_num].position, points[rand_num].transform.rotation);
-
+        var point = points.ElementAt(Random.Range(0, points.Length));
+        Instantiate(trap_holder, point.position, point.transform.rotation);
     }
 }

@@ -3,12 +3,15 @@ using TMPro;
 using UnityEngine;
 
 public class RoomLockScript : MonoBehaviour {
-    [SerializeField] private TMP_Text tmpText;
-    [SerializeField] private int goal = 5;
+    [SerializeField] private TMP_Text[] counters;
+    [SerializeField] private int goalMin = 3;
+    [SerializeField] private int goalMax = 10;
 
+    private int goal;
     private int current;
 
     public void Start() {
+        goal = Random.Range(goalMin, goalMax + 1);
         UpdateCount();
     }
 
@@ -23,6 +26,7 @@ public class RoomLockScript : MonoBehaviour {
     public void UpdateCount() {
         if (current >= goal) gameObject.GetComponentInParent<RoomScript>().Locked = false;
 
-        tmpText.text = $"{current}/{goal}";
+        foreach (var counter in counters)
+            counter.text = $"{current}/{goal}";
     }
 }
