@@ -11,13 +11,13 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject cheesePrefab;
     [SerializeField] private GameObject GameOverHolder;
     [SerializeField] private GameObject MiotlaHolder;
+    [SerializeField] private GameObject mouse;
     [SerializeField] public int playerScore;
     [SerializeField] public int playerCheese;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text cheeseTextHolder;
     [SerializeField] private Animator scoreTextAnimator;
     [SerializeField] private CheeseBarScript cheeseBarScript;
-    [SerializeField] Camera _camera;
 
     private FollowMouseScript mouseScript;
 
@@ -25,9 +25,10 @@ public class GameManager : MonoBehaviour {
         playerScore = 0;
         playerCheese = 0;
         cheeseTextHolder.text = $"0/{FollowMouseScript.maxCheese}";
-        mouseScript = GameObject.FindGameObjectWithTag("Mouse").GetComponent<FollowMouseScript>();
+        mouseScript = mouse.GetComponent<FollowMouseScript>();
+
         UpdateScore();
-        InvokeRepeating("SpawnMiotla", 6f, 5f);
+        InvokeRepeating(nameof(SpawnMiotla), 6f, 5f);
     }
 
     public int AddScore(int score) {
@@ -63,10 +64,12 @@ public class GameManager : MonoBehaviour {
     public void ResetGame() {
         SceneManager.LoadScene("MainScene");
     }
-    public void SpawnMiotla()
-    {
-        GameObject a = Instantiate(MiotlaHolder) as GameObject;
-        float r = UnityEngine.Random.Range(_camera.transform.position.y-5f, _camera.transform.position.y+5f);
-        a.transform.position = new Vector2(_camera.transform.position.x + 20f, r);
+
+    public void SpawnMiotla() {
+        var miot³a = Instantiate(MiotlaHolder);
+        float r = UnityEngine.Random.Range(Camera.main.transform.position.y - 5f, Camera.main.transform.position.y + 5f);
+        var dir = Camera.main.transform.position.x < mouse.transform.position.x ? 1 : -1;
+        miot³a.transform.position = new Vector2(Camera.main.transform.position.x + 20f * -dir, r);
+        miot³a.GetComponent<MiotlaScript>().Dir = dir;
     }
 }

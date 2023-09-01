@@ -1,31 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MiotlaScript : MonoBehaviour
-{
+public class MiotlaScript : MonoBehaviour {
     [SerializeField] private float miotlaSpeed = 10f;
     [SerializeField] private Rigidbody2D miotlaRb;
-    private Vector2 ScreenBounds;
-    void Start()
-    {
-        miotlaRb.velocity = new Vector2(-miotlaSpeed, 0);
-        Invoke("DestroyMiotla", 6f);
+
+    public int Dir {
+        set {
+            miotlaRb.velocity = new Vector2(miotlaSpeed * value, 0);
+            transform.localScale.Set(value, transform.localScale.y, transform.localScale.z);
+        }
     }
 
-    
-    void Update()
-    {
-       
+    void Start() {
+        Invoke(nameof(DestroyMiotla), 6f);
     }
-    void SpawnMiotla()
-    {
-       
-    }
-    void DestroyMiotla()
-    {
-        Destroy(this.gameObject);
-    }
-    
 
+    void DestroyMiotla() {
+        Destroy(gameObject);
+    }
 }
