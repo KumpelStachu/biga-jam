@@ -10,12 +10,14 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject[] roomPrefabs;
     [SerializeField] private GameObject cheesePrefab;
     [SerializeField] private GameObject GameOverHolder;
+    [SerializeField] private GameObject MiotlaHolder;
     [SerializeField] public int playerScore;
     [SerializeField] public int playerCheese;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text cheeseTextHolder;
     [SerializeField] private Animator scoreTextAnimator;
     [SerializeField] private CheeseBarScript cheeseBarScript;
+    [SerializeField] Camera _camera;
 
     private FollowMouseScript mouseScript;
 
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour {
         cheeseTextHolder.text = $"0/{FollowMouseScript.maxCheese}";
         mouseScript = GameObject.FindGameObjectWithTag("Mouse").GetComponent<FollowMouseScript>();
         UpdateScore();
+        InvokeRepeating("SpawnMiotla", 6f, 5f);
     }
 
     public int AddScore(int score) {
@@ -42,8 +45,13 @@ public class GameManager : MonoBehaviour {
         cheeseTextHolder.text = $"{playerCheese}/{FollowMouseScript.maxCheese}";
     }
 
-    public void CheeseBarHeal() {
-        cheeseBarScript.Heal(10);
+    public int CheeseBarHeal(int heal) {
+        cheeseBarScript.Heal(heal);
+        return 0;
+    }
+    public int CheeseBarRemoveHeal(int heal) {
+        cheeseBarScript.Remove(heal);
+        return 0;
     }
 
     public void GameOverShow() {
@@ -54,5 +62,11 @@ public class GameManager : MonoBehaviour {
 
     public void ResetGame() {
         SceneManager.LoadScene("MainScene");
+    }
+    public void SpawnMiotla()
+    {
+        GameObject a = Instantiate(MiotlaHolder) as GameObject;
+        float r = UnityEngine.Random.Range(_camera.transform.position.y-5f, _camera.transform.position.y+5f);
+        a.transform.position = new Vector2(_camera.transform.position.x + 20f, r);
     }
 }

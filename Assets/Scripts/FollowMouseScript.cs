@@ -50,9 +50,13 @@ public class FollowMouseScript : MonoBehaviour {
             obj.GetComponent<CircleCollider2D>().enabled = false;
             cheeseCounter++;
             gameManagerScript.playerCheese++;
-            gameManagerScript.CheeseBarHeal();
+            gameManagerScript.CheeseBarHeal(10);
             gameManagerScript.UpdateCheeseCounter();
             gameManagerScript.AddScore(10);
+        }
+        if(obj.CompareTag("Miotla")){
+            gameManagerScript.CheeseBarRemoveHeal(15);
+            SetMouseToStun();
         }
 
     }

@@ -585,7 +585,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1305598802}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6196,12 +6197,14 @@ MonoBehaviour:
   - {fileID: 7766327084467649865, guid: dd5182d877fa1a5438454f7d62111136, type: 3}
   cheesePrefab: {fileID: 0}
   GameOverHolder: {fileID: 833881646}
+  MiotlaHolder: {fileID: 5388224459236366802, guid: 56178db3bb6b20b428ddcfee971e2047, type: 3}
   playerScore: 0
   playerCheese: 0
   scoreText: {fileID: 1794124364}
   cheeseTextHolder: {fileID: 382026584}
   scoreTextAnimator: {fileID: 1794124366}
   cheeseBarScript: {fileID: 317676519}
+  _camera: {fileID: 519420031}
 --- !u!4 &1202233606
 Transform:
   m_ObjectHideFlags: 0
@@ -6454,6 +6457,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268922665}
   m_CullTransparentMesh: 1
+--- !u!1 &1305598801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1305598802}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1305598802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305598801}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.91, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 519420032}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1416203267
 GameObject:
   m_ObjectHideFlags: 0
@@ -11985,7 +12019,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 26efd4fb0e4588a42b482791b0abdab9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
