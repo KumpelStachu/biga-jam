@@ -11929,7 +11929,7 @@ GameObject:
   - component: {fileID: 1585417230}
   m_Layer: 0
   m_Name: Roomba
-  m_TagString: Untagged
+  m_TagString: roomba
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12053,6 +12053,8 @@ MonoBehaviour:
   roombaRb: {fileID: 1585417230}
   minSpeed: 140
   maxSpeed: 150
+  isActive: 1
+  cooldown: 5
 --- !u!70 &1585417233
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
