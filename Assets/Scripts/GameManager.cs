@@ -56,9 +56,9 @@ public class GameManager : MonoBehaviour {
     }
 
     public void GameOverShow() {
-        GameOverHolder.SetActive(true);
-        mouseScript.SetMouseToStun();
-        Time.timeScale = 0;
+        //GameOverHolder.SetActive(true);
+        //mouseScript.SetMouseToStun();
+        //Time.timeScale = 0;
     }
 
     public void ResetGame() {
