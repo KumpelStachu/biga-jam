@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RoomLockScript : MonoBehaviour {
     [SerializeField] private TMP_Text[] counters;
+    [SerializeField] private Animator roomLockedAnimator;
     [SerializeField] private int goalMin = 3;
     [SerializeField] private int goalMax = 10;
 
@@ -24,9 +25,17 @@ public class RoomLockScript : MonoBehaviour {
     }
 
     public void UpdateCount() {
-        if (current >= goal) gameObject.GetComponentInParent<RoomScript>().Locked = false;
+        if (current >= goal)
+        {
+            roomLockedAnimator.Play("LockRoom_unlocked");
+        }
+        
 
         foreach (var counter in counters)
             counter.text = $"{current}/{goal}";
+    }
+    public void RoomUnlockedState()
+    {
+        gameObject.GetComponentInParent<RoomScript>().Locked = false;
     }
 }
