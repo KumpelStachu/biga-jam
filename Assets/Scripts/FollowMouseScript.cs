@@ -7,7 +7,7 @@ public class FollowMouseScript : MonoBehaviour {
     [SerializeField] private float speed = 300;
     [SerializeField] private float dashMultiplier = 3;
     [SerializeField] private float dashDuration = 1;
-    [SerializeField] private int cheeseCounter = 0;
+    [SerializeField] public int cheeseCounter = 0;
     [SerializeField] private bool isStunned;
     [SerializeField] private bool isDashing;
     [SerializeField] private GameObject trap_holder;
@@ -75,7 +75,6 @@ public class FollowMouseScript : MonoBehaviour {
             obj.transform.position = transform.position;
             obj.GetComponent<CircleCollider2D>().enabled = false;
             cheeseCounter++;
-            gameManagerScript.playerCheese++;
             gameManagerScript.CheeseBarHeal(10);
             gameManagerScript.UpdateCheeseCounter();
             gameManagerScript.AddScore(10);

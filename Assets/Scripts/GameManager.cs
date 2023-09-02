@@ -12,18 +12,15 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject GameOverHolder;
     [SerializeField] private GameObject MiotlaHolder;
     [SerializeField] private GameObject mouse;
-    [SerializeField] public int playerScore;
-    [SerializeField] public int playerCheese;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text cheeseTextHolder;
     [SerializeField] private Animator scoreTextAnimator;
     [SerializeField] private CheeseBarScript cheeseBarScript;
+    public int playerScore;
 
     private FollowMouseScript mouseScript;
 
     void Start() {
-        playerScore = 0;
-        playerCheese = 0;
         cheeseTextHolder.text = $"0/{FollowMouseScript.maxCheese}";
         mouseScript = mouse.GetComponent<FollowMouseScript>();
 
@@ -43,16 +40,15 @@ public class GameManager : MonoBehaviour {
     }
 
     public void UpdateCheeseCounter() {
-        cheeseTextHolder.text = $"{playerCheese}/{FollowMouseScript.maxCheese}";
+        cheeseTextHolder.text = $"{mouseScript.cheeseCounter}/{FollowMouseScript.maxCheese}";
     }
 
-    public int CheeseBarHeal(int heal) {
+    public void CheeseBarHeal(int heal) {
         cheeseBarScript.Heal(heal);
-        return 0;
     }
-    public int CheeseBarRemoveHeal(int heal) {
+
+    public void CheeseBarRemoveHeal(int heal) {
         cheeseBarScript.Remove(heal);
-        return 0;
     }
 
     public void GameOverShow() {

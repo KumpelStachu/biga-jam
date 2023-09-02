@@ -182,7 +182,7 @@ MonoBehaviour:
   health: 0
   maxhealth: 100
   gameManagerScript: {fileID: 1202233605}
-  cheeseBarSpeed: 7
+  cheeseBarSpeed: 3
 --- !u!1 &341027607
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,8 +686,8 @@ MonoBehaviour:
   mouse: {fileID: 2085953185}
   offset: {x: 0, y: 0, z: -10}
   smoothTime: 0.25
-  cameraSize: 6.1
-  pointerMultiplier: 1.1
+  cameraSize: 6.05
+  pointerMultiplier: 1.05
 --- !u!1 &543311352
 GameObject:
   m_ObjectHideFlags: 0
@@ -6645,12 +6645,11 @@ MonoBehaviour:
   GameOverHolder: {fileID: 833881646}
   MiotlaHolder: {fileID: 5388224459236366802, guid: 56178db3bb6b20b428ddcfee971e2047, type: 3}
   mouse: {fileID: 2085953185}
-  playerScore: 0
-  playerCheese: 0
   scoreText: {fileID: 1794124364}
   cheeseTextHolder: {fileID: 382026584}
   scoreTextAnimator: {fileID: 1794124366}
   cheeseBarScript: {fileID: 317676519}
+  playerScore: 0
 --- !u!4 &1202233606
 Transform:
   m_ObjectHideFlags: 0
@@ -12457,7 +12456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 2085953190}
-  speed: 300
+  speed: 400
   dashMultiplier: 3
   dashDuration: 0.5
   cheeseCounter: 0

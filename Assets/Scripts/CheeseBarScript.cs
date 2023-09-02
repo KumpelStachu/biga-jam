@@ -8,7 +8,7 @@ public class CheeseBarScript : MonoBehaviour {
 
     [SerializeField] private float health, maxhealth = 100;
     [SerializeField] private GameManager gameManagerScript;
-    [SerializeField] private float cheeseBarSpeed = 7f;
+    [SerializeField] private float cheeseBarSpeed = 3f;
 
     float lerpSpeed;
 
@@ -26,6 +26,10 @@ public class CheeseBarScript : MonoBehaviour {
 
         HealthBarFiller();
         lerpSpeed = 3f * Time.deltaTime;
+    }
+
+    private void FixedUpdate() {
+        cheeseBarSpeed *= 1 + 0.005f * Time.deltaTime;
     }
 
     void HealthBarFiller() {
