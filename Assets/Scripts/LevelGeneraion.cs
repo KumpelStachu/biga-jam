@@ -45,7 +45,7 @@ public class LevelGeneraion : MonoBehaviour {
                 } while (NumberofNeighbors(checkPos, takenPositions) > 1 && iterations < 100);
 
                 if (iterations >= 100) {
-                    Debug.LogError("Could not create with fewer neighbors than: " + NumberofNeighbors(checkPos, takenPositions));
+                    //Debug.LogError("Could not create with fewer neighbors than: " + NumberofNeighbors(checkPos, takenPositions));
                 }
             }
 
@@ -142,7 +142,7 @@ public class LevelGeneraion : MonoBehaviour {
         } while (takenPositions.Contains(checkingPos) || x >= gridSizeX || x < -gridSizeX || y >= gridSizeY || y < -gridSizeY);
 
         if (inc >= 100) {
-            Debug.LogError("Could could not find position with only one neighbor");
+            //Debug.LogError("Could could not find position with only one neighbor");
         }
 
         return checkingPos;

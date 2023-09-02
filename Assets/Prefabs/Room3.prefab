@@ -551,7 +551,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7295219184606756335}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.59, y: 0.16, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -754,7 +754,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cheeseSpawnPoints: []
-  powerupSpawnPoints: []
+  powerUpSpawnPoints: []
+  powerUpPrefabs: []
   optionalDecoration: []
   cheesePrefab: {fileID: 719101835667228803, guid: b27eb34babb29394cb426f6bffafa26c, type: 3}
   doorPrefab: {fileID: 8215164495141447877, guid: 8cc01a3b35385504d84fd0bd9fc73862, type: 3}
@@ -766,6 +767,10 @@ MonoBehaviour:
   minCheese: 5
   maxCheese: 15
   maxDistance: 20
+  cheeseDelay: 10
+  cheeseRate: 7
+  powerUpDelay: 30
+  powerUpRate: 20
 --- !u!1 &7853718553784271440
 GameObject:
   m_ObjectHideFlags: 0

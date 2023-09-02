@@ -78,6 +78,7 @@ public class FollowMouseScript : MonoBehaviour {
             gameManagerScript.CheeseBarHeal(10);
             gameManagerScript.UpdateCheeseCounter();
             gameManagerScript.AddScore(10);
+
         }
         else if (obj.CompareTag("Miotla")) {
             gameManagerScript.CheeseBarRemoveHeal(15);

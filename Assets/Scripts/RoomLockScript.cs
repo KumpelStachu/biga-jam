@@ -21,21 +21,22 @@ public class RoomLockScript : MonoBehaviour {
 
         UpdateCount();
 
-        return current > goal ? current - goal : 0;
+        var ret = current > goal ? current - goal : 0;
+        if (ret != 0) current = goal;
+
+        return ret;
     }
 
     public void UpdateCount() {
-        if (current >= goal)
-        {
+        if (current >= goal) {
             roomLockedAnimator.Play("LockRoom_unlocked");
         }
-        
+
 
         foreach (var counter in counters)
             counter.text = $"{current}/{goal}";
     }
-    public void RoomUnlockedState()
-    {
+    public void RoomUnlockedState() {
         gameObject.GetComponentInParent<RoomScript>().Locked = false;
     }
 }
