@@ -689,8 +689,8 @@ MonoBehaviour:
   wallLeft: {fileID: 4720140846060567926}
   wallRight: {fileID: 550609521550344233}
   roomLock: {fileID: 8072635833403171419}
-  minCheese: 15
-  maxCheese: 20
+  minCheese: 5
+  maxCheese: 10
   maxDistance: 20
   cheeseDelay: 10
   cheeseRate: 7

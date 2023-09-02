@@ -753,7 +753,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110659a8641f8f64b92c5c867e5cf513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cheeseSpawnPoints: []
+  cheeseSpawnPoints:
+  - {fileID: 1642381473278642551}
+  - {fileID: 6892103285466827861}
+  - {fileID: 5772420716479747649}
+  - {fileID: 8372544961811562023}
+  - {fileID: 7176922141815942950}
+  - {fileID: 2692357704771880305}
+  - {fileID: 3834259313486969463}
+  - {fileID: 8537735863039901499}
+  - {fileID: 2313427076360380113}
+  - {fileID: 9145931961966122291}
+  - {fileID: 3925317803708757041}
+  - {fileID: 5729591863474486982}
+  - {fileID: 6594756195351505732}
+  - {fileID: 4662165864995280210}
+  - {fileID: 2700610947831700470}
+  - {fileID: 8774811735576135976}
+  - {fileID: 6046103696111522891}
+  - {fileID: 3335844726866018405}
+  - {fileID: 3489571125191751014}
+  - {fileID: 8672622891743328399}
+  - {fileID: 3076309631775507363}
+  - {fileID: 6935930073600284963}
   powerUpSpawnPoints: []
   powerUpPrefabs: []
   optionalDecoration: []
