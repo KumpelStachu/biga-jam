@@ -83,6 +83,10 @@ public class FollowMouseScript : MonoBehaviour {
             gameManagerScript.CheeseBarRemoveHeal(15);
             SetMouseToStun();
         }
+        else if (obj.CompareTag("roomba") && obj.GetComponent<RoombaScript>().Roomb()) {
+            gameManagerScript.CheeseBarRemoveHeal(5);
+            SetMouseToStun();
+        }
     }
 
     public void CancelDashing() {

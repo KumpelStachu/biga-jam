@@ -658,7 +658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110659a8641f8f64b92c5c867e5cf513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoints:
+  cheeseSpawnPoints:
   - {fileID: 1642381473278642551}
   - {fileID: 6892103285466827861}
   - {fileID: 5772420716479747649}
@@ -679,6 +679,8 @@ MonoBehaviour:
   - {fileID: 4095797483978095220}
   - {fileID: 3925317803708757041}
   - {fileID: 1426035736150637776}
+  powerupSpawnPoints: []
+  optionalDecoration: []
   cheesePrefab: {fileID: 719101835667228803, guid: b27eb34babb29394cb426f6bffafa26c, type: 3}
   doorPrefab: {fileID: 8215164495141447877, guid: 8cc01a3b35385504d84fd0bd9fc73862, type: 3}
   wallTop: {fileID: 3018801255218021115}

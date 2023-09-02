@@ -57,7 +57,7 @@ public class RoomScript : MonoBehaviour {
             roomLock.SetActive(value);
             if (!value) {
                 for (int i = 0; i < Random.Range(minCheese, maxCheese); i++)
-                    Invoke(nameof(GenerateCheese1), i * 0.1f);
+                    Invoke(nameof(GenerateCheese1), i * 0.2f);
                 InvokeRepeating(nameof(A), 10, 10);
             }
         }

@@ -11925,6 +11925,7 @@ GameObject:
   - component: {fileID: 1585417232}
   - component: {fileID: 1585417228}
   - component: {fileID: 1585417231}
+  - component: {fileID: 1585417233}
   - component: {fileID: 1585417230}
   m_Layer: 0
   m_Name: Roomba
@@ -12050,6 +12051,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roombaRb: {fileID: 1585417230}
+  minSpeed: 140
+  maxSpeed: 150
+--- !u!70 &1585417233
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585417227}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 1}
+  m_Direction: 0
 --- !u!1 &1625218736
 GameObject:
   m_ObjectHideFlags: 0
