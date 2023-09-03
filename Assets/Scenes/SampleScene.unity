@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 317676519}
   m_Layer: 5
   m_Name: Cheese_bar_holder
-  m_TagString: Untagged
+  m_TagString: cheesebar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6997,7 +6997,7 @@ GameObject:
   - component: {fileID: 1202233607}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: gamemanager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
