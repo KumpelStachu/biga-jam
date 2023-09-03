@@ -56,12 +56,21 @@ public class GameManager : MonoBehaviour {
     }
 
     public void GameOverShow() {
-        //GameOverHolder.SetActive(true);
-        //mouseScript.SetMouseToStun();
-        //Time.timeScale = 0;
+        GameOverHolder.SetActive(true);
+        mouseScript.SetMouseToStun();
+        Time.timeScale = 0;
     }
 
     public void ResetGame() {
+        Transition_animator.Play("MenuTransition");
+        Invoke("ResetScene", 1f);
+    }
+    public void ResetScene() {
+        Debug.Log("siema");
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public void BackToMainMenu() {
         SceneManager.LoadScene("MainScene");
     }
 
