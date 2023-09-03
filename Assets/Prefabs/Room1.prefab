@@ -121,7 +121,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.61, y: 3.77}
+  m_Size: {x: 6.35, y: 3.53}
   m_EdgeRadius: 0
 --- !u!1 &509191788548718562
 GameObject:
@@ -328,7 +328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8381024493610842405}
   - component: {fileID: 3320175574039734094}
-  - component: {fileID: 5729289798642747214}
+  - component: {fileID: 5827198066011859587}
   m_Layer: 0
   m_Name: Shelf_v1
   m_TagString: Untagged
@@ -403,8 +403,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5729289798642747214
-BoxCollider2D:
+--- !u!60 &5827198066011859587
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -426,9 +426,24 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.28, y: 2.25}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.08, y: -0.465}
+      - {x: 2.08, y: 1.015}
+      - {x: 2.03, y: 1.045}
+      - {x: -1.99, y: 1.045}
+      - {x: -2.03, y: 1.025}
+      - {x: -2.04, y: 0.995}
+      - {x: -2.04, y: -0.435}
+      - {x: -1.9499999, y: -0.72499996}
+      - {x: -1.8499999, y: -0.995}
+      - {x: -1.81, y: -1.045}
+      - {x: -1.76, y: -1.0649999}
+      - {x: -0.35, y: -1.0649999}
+      - {x: -0.34, y: -1.055}
+      - {x: 1.81, y: -1.055}
+      - {x: 1.9, y: -0.98499995}
+  m_UseDelaunayMesh: 0
 --- !u!1 &931724691378217788
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,7 +920,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8296205604055977962}
   - component: {fileID: 6099531117546828150}
-  - component: {fileID: 7565343565818054337}
+  - component: {fileID: 4961373621668674219}
   m_Layer: 0
   m_Name: Shelf_v2
   m_TagString: Untagged
@@ -980,8 +995,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &7565343565818054337
-BoxCollider2D:
+--- !u!60 &4961373621668674219
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1003,9 +1018,24 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.36, y: 2.26}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.09, y: -0.48}
+      - {x: 2.09, y: 1}
+      - {x: 2.04, y: 1.03}
+      - {x: -1.9799999, y: 1.03}
+      - {x: -2.02, y: 1.01}
+      - {x: -2.03, y: 0.97999996}
+      - {x: -2.03, y: -0.45}
+      - {x: -1.9399999, y: -0.74}
+      - {x: -1.8399999, y: -1.01}
+      - {x: -1.8, y: -1.06}
+      - {x: -1.75, y: -1.0799999}
+      - {x: -0.34, y: -1.0799999}
+      - {x: -0.32999998, y: -1.0699999}
+      - {x: 1.8199999, y: -1.0699999}
+      - {x: 1.91, y: -1}
+  m_UseDelaunayMesh: 0
 --- !u!1 &2370475812713007481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,7 +1398,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.86, y: 1.36}
+  m_Size: {x: 8.66, y: 1.09}
   m_EdgeRadius: 0
 --- !u!1 &2692483885451958454
 GameObject:
@@ -1723,7 +1753,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9251615, y: 1.9252914}
+  m_Size: {x: 1.75, y: 1.76}
   m_EdgeRadius: 0
 --- !u!1 &3011657221136639017
 GameObject:

@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1572554243981925554}
   - component: {fileID: 5126039493888476393}
-  - component: {fileID: 594398157870612000}
+  - component: {fileID: 8959808408677457326}
   m_Layer: 0
   m_Name: BedShelfV1
   m_TagString: Untagged
@@ -147,8 +147,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &594398157870612000
-BoxCollider2D:
+--- !u!60 &8959808408677457326
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -160,7 +160,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1223208, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -170,9 +170,16 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.9753582, y: 2.26}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.42999998, y: 1.03}
+      - {x: -0.90999997, y: 1.03}
+      - {x: -0.91999996, y: 0.98999995}
+      - {x: -0.91999996, y: -1.09}
+      - {x: 0.42999998, y: -1.09}
+      - {x: 0.98999995, y: -0.48999998}
+      - {x: 0.98999995, y: 0.45}
+  m_UseDelaunayMesh: 0
 --- !u!1 &2479888380462481086
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +371,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.013448715, y: -0.00000017881393}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -375,7 +382,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.86, y: 1.36}
+  m_Size: {x: 8.617903, y: 1.144805}
   m_EdgeRadius: 0
 --- !u!1 &3089769344466655271
 GameObject:
@@ -511,7 +518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8788046713940452725}
   - component: {fileID: 5912848551731499735}
-  - component: {fileID: 5603550785972130955}
+  - component: {fileID: 2066831995172983830}
   m_Layer: 0
   m_Name: BedShelfV1
   m_TagString: Untagged
@@ -586,8 +593,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5603550785972130955
-BoxCollider2D:
+--- !u!60 &2066831995172983830
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -599,7 +606,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1223208, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -609,9 +616,16 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.9753582, y: 2.26}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.42999998, y: 1.03}
+      - {x: -0.90999997, y: 1.03}
+      - {x: -0.91999996, y: 0.98999995}
+      - {x: -0.91999996, y: -1.09}
+      - {x: 0.42999998, y: -1.09}
+      - {x: 0.98999995, y: -0.48999998}
+      - {x: 0.98999995, y: 0.45}
+  m_UseDelaunayMesh: 0
 --- !u!1 &4172996369563561900
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,7 +724,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.18197262, y: -0.16175365}
+  m_Offset: {x: -0.1760847, y: -0.12053886}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -721,7 +735,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.881232, y: 1.9564927}
+  m_Size: {x: 1.775251, y: 1.756305}
   m_EdgeRadius: 0
 --- !u!1 &4381021477387192356
 GameObject:
@@ -764,7 +778,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3316496943006012153}
   - component: {fileID: 1594155664758996269}
-  - component: {fileID: 245273410381147888}
+  - component: {fileID: 5811493855285749880}
   m_Layer: 0
   m_Name: BedPlant (1)
   m_TagString: Untagged
@@ -839,8 +853,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &245273410381147888
-BoxCollider2D:
+--- !u!60 &5811493855285749880
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -852,7 +866,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0094611645, y: 0.10407019}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -862,9 +876,24 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.000484, y: 2.0518594}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.0779178, y: -0.42764327}
+      - {x: 2.0678656, y: 0.9867191}
+      - {x: 2.024506, y: 1.0100794}
+      - {x: -1.9799999, y: 1.03}
+      - {x: -2.02, y: 1.01}
+      - {x: -2.03, y: 0.97999996}
+      - {x: -2.03, y: -0.45}
+      - {x: -1.9399999, y: -0.74}
+      - {x: -1.8399999, y: -1.01}
+      - {x: -1.8, y: -1.06}
+      - {x: -1.7342615, y: -1.0768524}
+      - {x: -0.34, y: -1.0799999}
+      - {x: -0.32999998, y: -1.0699999}
+      - {x: 1.8240275, y: -1.0458354}
+      - {x: 1.9349272, y: -0.80859077}
+  m_UseDelaunayMesh: 0
 --- !u!1 &4712773179927096797
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,6 +905,7 @@ GameObject:
   - component: {fileID: 4789032792731036908}
   - component: {fileID: 7232934517968959179}
   - component: {fileID: 5177153849558789923}
+  - component: {fileID: 4714232654292389567}
   m_Layer: 0
   m_Name: Bed
   m_TagString: Untagged
@@ -975,7 +1005,33 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.210022, y: 6.3656616}
+  m_Size: {x: 5.13, y: 6.29}
+  m_EdgeRadius: 0
+--- !u!61 &4714232654292389567
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4712773179927096797}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.05690086, y: 2.9208968}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6.37, y: 6.87}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.952729, y: 0.64887}
   m_EdgeRadius: 0
 --- !u!1 &4810954523644162392
 GameObject:
@@ -1142,7 +1198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 779079662455845247}
   - component: {fileID: 6914541869213749567}
-  - component: {fileID: 2781436981795985306}
+  - component: {fileID: 8593833810162225744}
   m_Layer: 0
   m_Name: BedShelfV2
   m_TagString: Untagged
@@ -1217,8 +1273,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2781436981795985306
-BoxCollider2D:
+--- !u!60 &8593833810162225744
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1230,7 +1286,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.09846166, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1240,9 +1296,15 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.2630768, y: 1.55}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.65999997, y: 0.765}
+      - {x: -0.65999997, y: -0.745}
+      - {x: 0.21147002, y: -0.7306188}
+      - {x: 0.6212369, y: -0.5039956}
+      - {x: 0.6212369, y: 0.55376244}
+      - {x: 0.23889393, y: 0.75061876}
+  m_UseDelaunayMesh: 0
 --- !u!1 &6624309628601881379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,7 +1346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2409971408439460679}
   - component: {fileID: 5388278592168041556}
-  - component: {fileID: 5806739817625712514}
+  - component: {fileID: 90625703240811470}
   m_Layer: 0
   m_Name: BedShelfV2
   m_TagString: Untagged
@@ -1359,8 +1421,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5806739817625712514
-BoxCollider2D:
+--- !u!60 &90625703240811470
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1372,7 +1434,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.09846166, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1382,9 +1444,15 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.2630768, y: 1.55}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.65999997, y: 0.765}
+      - {x: -0.65999997, y: -0.745}
+      - {x: 0.21631856, y: -0.7400322}
+      - {x: 0.63509667, y: -0.52086806}
+      - {x: 0.65, y: 0.525}
+      - {x: 0.23250878, y: 0.7302251}
+  m_UseDelaunayMesh: 0
 --- !u!1 &7243717650299546073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,6 +1783,7 @@ MonoBehaviour:
   cheeseRate: 7
   powerUpDelay: 30
   powerUpRate: 20
+  roombaChance: 0.5
 --- !u!1 &7845133577891459472
 GameObject:
   m_ObjectHideFlags: 0
@@ -3672,6 +3741,10 @@ PrefabInstance:
     - target: {fileID: 443729772421178557, guid: b34ab308f9ae08141957c71ebf1e014a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 443729772421178559, guid: b34ab308f9ae08141957c71ebf1e014a, type: 3}
+      propertyPath: m_Radius
+      value: 0.45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
