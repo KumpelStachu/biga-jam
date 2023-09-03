@@ -6753,6 +6753,7 @@ MonoBehaviour:
   miotlaInitialDelay: 6
   miotlaDelay: 8
   miotlaDelayMultiplier: 0.975
+  canIDie: 0
   playerScore: 0
 --- !u!4 &1202233606
 Transform:
@@ -13336,6 +13337,11 @@ MonoBehaviour:
   mouse_animator: {fileID: 2085953192}
   gameManagerScript: {fileID: 1202233605}
   pointerDistance: 1
+  speeedUpTime: 5
+  speeedUpMultiplier: 2
+  godModeTime: 5
+  isGod: 0
+  isSpeeed: 0
 --- !u!212 &2085953187
 SpriteRenderer:
   m_ObjectHideFlags: 0

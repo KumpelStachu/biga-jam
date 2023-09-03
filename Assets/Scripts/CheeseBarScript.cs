@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +7,8 @@ public class CheeseBarScript : MonoBehaviour {
     [SerializeField] private float health, maxhealth = 100;
     [SerializeField] private GameManager gameManagerScript;
     [SerializeField] private float cheeseBarSpeed = 3f;
+
+    public float MaxHealth { get { return maxhealth; } }
 
     float lerpSpeed;
 
@@ -24,7 +24,7 @@ public class CheeseBarScript : MonoBehaviour {
             gameManagerScript.GameOverShow();
         }
 
-        HealthBarFiller();
+        healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, health / maxhealth, lerpSpeed);
         lerpSpeed = 3f * Time.deltaTime;
     }
 
@@ -32,17 +32,11 @@ public class CheeseBarScript : MonoBehaviour {
         cheeseBarSpeed *= 1 + 0.005f * Time.deltaTime;
     }
 
-    void HealthBarFiller() {
-        healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, health / maxhealth, lerpSpeed);
+    public void Heal(float points) {
+        health = Mathf.Clamp(health + points, 0, maxhealth);
     }
 
-    public void Heal(float healingPoints) {
-        if (health < maxhealth)
-            health += healingPoints;
-    }
-
-    public void Remove(float RemovingPoints) {
-        if (health < maxhealth)
-            health -= RemovingPoints;
+    public void Remove(float points) {
+        Heal(-points);
     }
 }
