@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,17 +7,19 @@ public class RoombaScript : MonoBehaviour {
     [SerializeField] private float maxSpeed = 150;
     [SerializeField] private bool isActive = true;
     [SerializeField] private float cooldown = 5;
-    [Range(0, 1)][SerializeField] private float spawnChance = 0.5f;
 
     public void Awake() {
-        if (Random.value > spawnChance)
-            Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void Start() {
-        var mouse = GameObject.FindGameObjectWithTag("Mouse");
+        var collider = GetComponent<CircleCollider2D>();
+        var mouse = GameObject.FindGameObjectWithTag(Tag.Mouse);
+        var roomLock = gameObject.GetComponentInParent<RoomScript>().Children.Find(e => e.CompareTag(Tag.RoomLock));
 
-        Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), mouse.GetComponent<EdgeCollider2D>());
+        Physics2D.IgnoreCollision(collider, mouse.GetComponent<EdgeCollider2D>());
+        foreach (var roomLockCollider in roomLock.GetComponents<BoxCollider2D>())
+            Physics2D.IgnoreCollision(collider, roomLockCollider);
 
         var dirX = Random.value < 0.5f ? 1 : -1;
         var dirY = Random.value < 0.5f ? 1 : -1;

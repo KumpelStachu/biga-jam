@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 719101835667228815}
   - component: {fileID: 719101835667228800}
   - component: {fileID: 719101835667228801}
-  - component: {fileID: 719101835667228802}
   - component: {fileID: 8762857239999472273}
+  - component: {fileID: 1224952809228872007}
   m_Layer: 0
   m_Name: Cheese
   m_TagString: cheese
@@ -108,22 +108,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &719101835667228802
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 719101835667228803}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.4635293
 --- !u!95 &8762857239999472273
 Animator:
   serializedVersion: 4
@@ -144,3 +128,90 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!60 &1224952809228872007
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719101835667228803}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.80333334, y: 1.2766666}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.32500002, y: -0.58500004}
+      - {x: 0.34833333, y: -0.57166666}
+      - {x: 0.375, y: -0.545}
+      - {x: 0.39166668, y: -0.52500004}
+      - {x: 0.39166668, y: -0.46833333}
+      - {x: 0.30833334, y: -0.041666668}
+      - {x: 0.285, y: 0.05166667}
+      - {x: 0.275, y: 0.08166667}
+      - {x: 0.25833333, y: 0.115}
+      - {x: 0.23166667, y: 0.13833334}
+      - {x: 0.21166667, y: 0.13833334}
+      - {x: 0.17833334, y: 0.165}
+      - {x: 0.15833333, y: 0.19500001}
+      - {x: 0.15833333, y: 0.23166667}
+      - {x: 0.17166667, y: 0.28833333}
+      - {x: 0.20833334, y: 0.32833335}
+      - {x: 0.205, y: 0.37833333}
+      - {x: 0.18166667, y: 0.44500002}
+      - {x: 0.16833334, y: 0.5083333}
+      - {x: 0.14166667, y: 0.5783333}
+      - {x: 0.13166668, y: 0.59833336}
+      - {x: 0.125, y: 0.60833335}
+      - {x: 0.105000004, y: 0.62833333}
+      - {x: 0.085, y: 0.62833333}
+      - {x: 0.071666665, y: 0.61833334}
+      - {x: 0.038333334, y: 0.56166667}
+      - {x: -0.025, y: 0.43166667}
+      - {x: -0.048333336, y: 0.37166667}
+      - {x: -0.065000005, y: 0.315}
+      - {x: -0.068333335, y: 0.305}
+      - {x: -0.018333334, y: 0.24833333}
+      - {x: -0.018333334, y: 0.185}
+      - {x: -0.061666667, y: 0.13166668}
+      - {x: -0.14833334, y: 0.125}
+      - {x: -0.16166668, y: 0.108333334}
+      - {x: -0.165, y: 0.08833334}
+      - {x: -0.19833334, y: 0.015000001}
+      - {x: -0.255, y: -0.105000004}
+      - {x: -0.2916667, y: -0.18166667}
+      - {x: -0.2916667, y: -0.18833333}
+      - {x: -0.36166668, y: -0.32500002}
+      - {x: -0.37166667, y: -0.33166668}
+      - {x: -0.38833335, y: -0.375}
+      - {x: -0.38833335, y: -0.39833334}
+      - {x: -0.34833333, y: -0.44500002}
+      - {x: -0.30166668, y: -0.465}
+      - {x: -0.26833335, y: -0.465}
+      - {x: -0.245, y: -0.45833334}
+      - {x: -0.17166667, y: -0.43166667}
+      - {x: -0.14500001, y: -0.43166667}
+      - {x: -0.125, y: -0.45166668}
+      - {x: -0.11833334, y: -0.48166668}
+      - {x: -0.12166667, y: -0.52500004}
+      - {x: -0.12833333, y: -0.58833337}
+      - {x: -0.105000004, y: -0.60833335}
+      - {x: -0.011666667, y: -0.625}
+      - {x: 0.015000001, y: -0.62833333}
+      - {x: 0.13166668, y: -0.62833333}
+      - {x: 0.18166667, y: -0.62166667}
+      - {x: 0.22833334, y: -0.6116667}
+      - {x: 0.25833333, y: -0.605}
+  m_UseDelaunayMesh: 0

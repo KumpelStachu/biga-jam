@@ -1,5 +1,4 @@
 using System.Linq;
-using TMPro;
 using UnityEngine;
 
 public class FollowMouseScript : MonoBehaviour {
@@ -65,26 +64,26 @@ public class FollowMouseScript : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col) {
         var obj = col.gameObject;
 
-        if (obj.CompareTag("roomLock")) {
+        if (obj.CompareTag(Tag.RoomLock)) {
             cheeseCounter = obj.GetComponent<RoomLockScript>().AddCheese(cheeseCounter);
             gameManagerScript.UpdateCheeseCounter();
             RemoveCheese(maxCheese - cheeseCounter);
         }
-        else if (obj.CompareTag("cheese") && cheeseCounter < maxCheese) {
+        else if (obj.CompareTag(Tag.Cheese) && cheeseCounter < maxCheese) {
             obj.transform.SetParent(transform, false);
             obj.transform.position = transform.position;
-            obj.GetComponent<CircleCollider2D>().enabled = false;
+            obj.GetComponent<PolygonCollider2D>().enabled = false;
             cheeseCounter++;
             gameManagerScript.CheeseBarHeal(10);
             gameManagerScript.UpdateCheeseCounter();
             gameManagerScript.AddScore(10);
 
         }
-        else if (obj.CompareTag("Miotla")) {
+        else if (obj.CompareTag(Tag.Miotla)) {
             gameManagerScript.CheeseBarRemoveHeal(15);
             SetMouseToStun();
         }
-        else if (obj.CompareTag("roomba") && obj.GetComponent<RoombaScript>().Roomb()) {
+        else if (obj.CompareTag(Tag.Roomba) && obj.GetComponent<RoombaScript>().Roomb()) {
             gameManagerScript.CheeseBarRemoveHeal(5);
             SetMouseToStun();
         }
@@ -95,7 +94,7 @@ public class FollowMouseScript : MonoBehaviour {
     }
 
     public void RemoveCheese(int value = maxCheese) {
-        foreach (var item in GetComponentsInChildren<Transform>().Where(child => child.CompareTag("cheese")).Take(value))
+        foreach (var item in GetComponentsInChildren<Transform>().Where(child => child.CompareTag(Tag.Cheese)).Take(value))
             Destroy(item.gameObject);
     }
 

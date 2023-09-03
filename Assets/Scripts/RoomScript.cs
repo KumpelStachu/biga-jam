@@ -21,6 +21,7 @@ public class RoomScript : MonoBehaviour {
     [SerializeField] private float cheeseRate = 7;
     [SerializeField] private float powerUpDelay = 30;
     [SerializeField] private float powerUpRate = 20;
+    [Range(0, 1)][SerializeField] private float roombaChance = 0.5f;
 
     private GameObject mouse;
 
@@ -87,15 +88,20 @@ public class RoomScript : MonoBehaviour {
         set {
             roomLock.SetActive(value);
 
-            if (!value) {
-                GenerateCheese(Random.Range(minCheese, maxCheese));
-                //for (int i = 0; i < Random.Range(minCheese, maxCheese); i++)
-                //    Invoke(nameof(GenerateOneCheese), i * 0.1f);
+            if (value) return;
 
-                InvokeRepeating(nameof(GenerateCheeseIfPlayerIsCloseEnough), cheeseDelay, cheeseRate);
-                if (powerUpPrefabs.Length > 0) // TODO: usuñ ifa jak dodasz prefaby powerupów!!!
-                    InvokeRepeating(nameof(GeneratePowerUp), powerUpDelay, powerUpRate);
-            }
+            GenerateCheese(Random.Range(minCheese, maxCheese));
+            //for (int i = 0; i < Random.Range(minCheese, maxCheese); i++)
+            //    Invoke(nameof(GenerateOneCheese), i * 0.1f);
+
+            InvokeRepeating(nameof(GenerateCheeseIfPlayerIsCloseEnough), cheeseDelay, cheeseRate);
+            if (powerUpPrefabs.Length > 0) // TODO: usuñ ifa jak dodasz prefaby powerupów!!!
+                InvokeRepeating(nameof(GeneratePowerUp), powerUpDelay, powerUpRate);
+
+            var roomba = Children.Find(e => e.CompareTag(Tag.Roomba)).gameObject;
+            if (Random.value > roombaChance)
+                roomba.SetActive(true);
+            else Destroy(roomba);
         }
     }
 }
