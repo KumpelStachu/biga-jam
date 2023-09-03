@@ -15,9 +15,13 @@ public class FollowMouseScript : MonoBehaviour {
     [SerializeField] private Animator mouse_animator;
     [SerializeField] private GameManager gameManagerScript;
     [SerializeField] private float pointerDistance = 0.1f;
+    [SerializeField] private float speeedUpTime = 5;
+    [SerializeField] private float speeedUpMultiplier = 2;
+    [SerializeField] private float godModeTime = 5;
 
     public const int maxCheese = 3;
     private Vector2 moveDirection = Vector2.zero;
+    public bool isGod, isSpeeed;
 
     void Start() {
         InvokeRepeating(nameof(SpawnTrap), 3, 4);
@@ -40,15 +44,16 @@ public class FollowMouseScript : MonoBehaviour {
         if (isStunned) return;
 
         var pointer = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        var speeed = isSpeeed ? speeedUpMultiplier : 1;
 
         if (isDashing) {
-            rigidbody.velocity = dashMultiplier * speed * Time.deltaTime * moveDirection;
+            rigidbody.velocity = dashMultiplier * speed * speeed * Time.deltaTime * moveDirection;
         }
         else {
             moveDirection = (new Vector2(pointer.x, pointer.y) - rigidbody.position).normalized;
 
             if (Vector2.Distance(rigidbody.position, pointer) > pointerDistance) {
-                rigidbody.velocity = speed * Time.deltaTime * moveDirection;
+                rigidbody.velocity = speed * speeed * Time.deltaTime * moveDirection;
             }
             else {
                 rigidbody.velocity = Vector2.zero;
@@ -63,6 +68,8 @@ public class FollowMouseScript : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col) {
         var obj = col.gameObject;
+
+        Debug.Log(obj.tag);
 
         if (obj.CompareTag(Tag.RoomLock)) {
             cheeseCounter = obj.GetComponent<RoomLockScript>().AddCheese(cheeseCounter);
@@ -87,6 +94,35 @@ public class FollowMouseScript : MonoBehaviour {
             gameManagerScript.CheeseBarRemoveHeal(5);
             SetMouseToStun();
         }
+        else if (obj.CompareTag(Tag.PowerUp) && CanIPower()) {
+            obj.GetComponent<PowerUpScript>().Activate();
+        }
+    }
+
+    private bool CanIPower() {
+        return !isStunned && !isSpeeed && !isGod;
+    }
+
+    public void SpeeedUp() {
+        isSpeeed = true;
+
+        gameManagerScript.ShowSpeeed(speeedUpTime);
+        Invoke(nameof(SpedDown), speeedUpTime);
+    }
+
+    public void GodMode() {
+        isGod = true;
+
+        gameManagerScript.ShowGod(godModeTime);
+        Invoke(nameof(MouseMode), godModeTime);
+    }
+
+    public void SpedDown() {
+        isSpeeed = false;
+    }
+
+    public void MouseMode() {
+        isGod = false;
     }
 
     public void CancelDashing() {
@@ -99,6 +135,7 @@ public class FollowMouseScript : MonoBehaviour {
     }
 
     public void SetMouseToStun() {
+        if (isGod) return;
         isStunned = true;
         mouse_animator.Play("Mouse_get_stuned");
         rigidbody.velocity = Vector2.zero;

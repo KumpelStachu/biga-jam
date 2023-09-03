@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private float miotlaInitialDelay = 6;
     [SerializeField] private float miotlaDelay = 8;
     [SerializeField] private float miotlaDelayMultiplier = 0.9f;
+    [SerializeField] private bool canIDie = true;
 
     private FollowMouseScript mouseScript;
     public int playerScore;
@@ -55,7 +56,29 @@ public class GameManager : MonoBehaviour {
         cheeseBarScript.Remove(heal);
     }
 
+    public void ShowSpeeed(float time) {
+        // TODO: show speeed bar
+
+        Invoke(nameof(HideSpeeed), time);
+    }
+
+    public void ShowGod(float time) {
+        // TODO: show god bar
+
+        Invoke(nameof(HideGod), time);
+    }
+
+    public void HideSpeeed() {
+        // TODO: hide speeed bar
+    }
+
+    public void HideGod() {
+        // TODO: hide god bar
+    }
+
     public void GameOverShow() {
+        if (!canIDie) return;
+
         GameOverHolder.SetActive(true);
         mouseScript.SetMouseToStun();
         Time.timeScale = 0;
