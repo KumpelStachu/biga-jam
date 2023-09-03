@@ -8,7 +8,12 @@ public class RoombaScript : MonoBehaviour {
     [SerializeField] private float maxSpeed = 150;
     [SerializeField] private bool isActive = true;
     [SerializeField] private float cooldown = 5;
+    [Range(0, 1)][SerializeField] private float spawnChance = 0.5f;
 
+    public void Awake() {
+        if (Random.value > spawnChance)
+            Destroy(gameObject);
+    }
 
     public void Start() {
         var mouse = GameObject.FindGameObjectWithTag("Mouse");

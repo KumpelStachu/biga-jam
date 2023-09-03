@@ -5,8 +5,8 @@ using UnityEngine;
 public class RoomLockScript : MonoBehaviour {
     [SerializeField] private TMP_Text[] counters;
     [SerializeField] private Animator roomLockedAnimator;
-    [SerializeField] private int goalMin = 3;
-    [SerializeField] private int goalMax = 10;
+    [Range(1, 9)][SerializeField] private int goalMin = 3;
+    [Range(1, 9)][SerializeField] private int goalMax = 9;
 
     private int goal;
     private int current;
@@ -19,10 +19,10 @@ public class RoomLockScript : MonoBehaviour {
     public int AddCheese(int count) {
         current += count;
 
-        UpdateCount();
-
         var ret = current > goal ? current - goal : 0;
         if (ret != 0) current = goal;
+
+        UpdateCount();
 
         return ret;
     }
@@ -32,10 +32,10 @@ public class RoomLockScript : MonoBehaviour {
             roomLockedAnimator.Play("LockRoom_unlocked");
         }
 
-
         foreach (var counter in counters)
             counter.text = $"{current}/{goal}";
     }
+
     public void RoomUnlockedState() {
         gameObject.GetComponentInParent<RoomScript>().Locked = false;
     }
