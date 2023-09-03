@@ -62,10 +62,10 @@ public class GameManager : MonoBehaviour {
     }
 
     public void SpawnMiotla() {
-        var miot³a = Instantiate(MiotlaHolder);
+        var miotla = Instantiate(MiotlaHolder);
         float r = UnityEngine.Random.Range(Camera.main.transform.position.y - 5f, Camera.main.transform.position.y + 5f);
         var dir = Camera.main.transform.position.x < mouse.transform.position.x ? 1 : -1;
-        miot³a.transform.position = new Vector2(Camera.main.transform.position.x + 20f * -dir, r);
-        miot³a.GetComponent<MiotlaScript>().Dir = dir;
+        miotla.transform.position = new Vector2(Camera.main.transform.position.x + 20f * -dir, r);
+        miotla.GetComponent<MiotlaScript>().Dir = dir;
     }
 }
