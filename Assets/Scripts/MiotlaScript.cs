@@ -7,7 +7,7 @@ public class MiotlaScript : MonoBehaviour {
     public int Dir {
         set {
             miotlaRb.velocity = new Vector2(miotlaSpeed * value, 0);
-            transform.localScale.Set(value, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(-value, transform.localScale.y, transform.localScale.z);
         }
     }
 

@@ -64,6 +64,7 @@ public class FollowMouseScript : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col) {
         var obj = col.gameObject;
 
+        Debug.Log(obj.tag);
         if (obj.CompareTag(Tag.RoomLock)) {
             cheeseCounter = obj.GetComponent<RoomLockScript>().AddCheese(cheeseCounter);
             gameManagerScript.UpdateCheeseCounter();

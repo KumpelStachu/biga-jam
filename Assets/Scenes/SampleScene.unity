@@ -6743,17 +6743,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c088ec8d85a0d5b46955c7b4e82c68b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomPrefabs:
-  - {fileID: 7766327084467649865, guid: dede5b0d1f84279459f818ba710eeb7b, type: 3}
-  - {fileID: 7766327084467649865, guid: dd5182d877fa1a5438454f7d62111136, type: 3}
-  cheesePrefab: {fileID: 0}
   GameOverHolder: {fileID: 833881646}
-  MiotlaHolder: {fileID: 5388224459236366802, guid: 56178db3bb6b20b428ddcfee971e2047, type: 3}
+  MiotlaHolder: {fileID: 7512698481585343361, guid: 63d061c7dde7cb244821a8026ca8112a, type: 3}
   mouse: {fileID: 2085953185}
   scoreText: {fileID: 1794124364}
   cheeseTextHolder: {fileID: 382026584}
   scoreTextAnimator: {fileID: 1794124366}
   cheeseBarScript: {fileID: 317676519}
+  miotlaInitialDelay: 6
+  miotlaDelay: 8
+  miotlaDelayMultiplier: 0.975
   playerScore: 0
 --- !u!4 &1202233606
 Transform:
