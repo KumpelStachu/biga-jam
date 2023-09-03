@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour {
 
     [SerializeField] private Animator menu_animator;
+    [SerializeField] private GameObject OptionsHolder;
 
     [SerializeField] private Animator mouse_animator;
     [SerializeField] private Animator clouds_animator;
@@ -31,4 +32,19 @@ public class MenuScript : MonoBehaviour {
         //SceneManager.UnloadSceneAsync("MainScene");
         SceneManager.LoadScene("SampleScene");
     }
+
+    public void OptionsLoad()
+    {
+        OptionsHolder.SetActive(true);
+    }
+    public void OptionsExit()
+    {
+        OptionsHolder.SetActive(false);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
 }

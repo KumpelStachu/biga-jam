@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
+    [SerializeField] private Animator Transition_animator;
     [SerializeField] private GameObject GameOverHolder;
     [SerializeField] private GameObject MiotlaHolder;
     [SerializeField] private GameObject mouse;
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour {
     public int playerScore;
 
     void Start() {
+        Transition_animator.Play("MenuTransition_back");
         cheeseTextHolder.text = $"0/{FollowMouseScript.maxCheese}";
         mouseScript = mouse.GetComponent<FollowMouseScript>();
 
@@ -83,6 +85,15 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ResetGame() {
+        Transition_animator.Play("MenuTransition");
+        Invoke("ResetScene", 1f);
+    }
+    public void ResetScene() {
+        Debug.Log("siema");
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public void BackToMainMenu() {
         SceneManager.LoadScene("MainScene");
     }
 
