@@ -775,7 +775,7 @@ MonoBehaviour:
   cheeseDelay: 10
   cheeseRate: 7
   roombaChance: 0
-  spawnDelay: 0.5
+  spawnDelay: 0.2
 --- !u!1 &4033350137348615018
 GameObject:
   m_ObjectHideFlags: 0
