@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -5,7 +6,6 @@ using UnityEngine;
 public class RoomScript : MonoBehaviour {
     [SerializeField] private Transform[] cheeseSpawnPoints;
     [SerializeField] private Transform[] powerUpSpawnPoints;
-    [SerializeField] private GameObject[] powerUpPrefabs;
     [SerializeField] private GameObject[] optionalDecoration;
     [SerializeField] private GameObject cheesePrefab;
     [SerializeField] private GameObject doorPrefab;
@@ -22,8 +22,15 @@ public class RoomScript : MonoBehaviour {
     [SerializeField] private float powerUpDelay = 30;
     [SerializeField] private float powerUpRate = 20;
     [Range(0, 1)][SerializeField] private float roombaChance = 0.5f;
+    [SerializeField] private float spawnDelay = 0.5f;
 
     private GameObject mouse;
+    private GameObject[] powerUps;
+
+    public void Awake() {
+        powerUps = FindChildrenWithTag(Tag.PowerUp).Select(e => e.gameObject).ToArray();
+        foreach (var powerUp in powerUps) powerUp.SetActive(false);
+    }
 
     public void Start() {
         mouse = GameObject.FindGameObjectWithTag(Tag.Mouse);
@@ -45,35 +52,41 @@ public class RoomScript : MonoBehaviour {
     }
 
     public void GenerateCheese(int count = 1) {
+        StartCoroutine(nameof(GenerateCheeseInner), count);
+    }
+
+    private IEnumerator GenerateCheeseInner(int count = 1) {
         foreach (var spawnPoint in RandomFreeSpaces(cheeseSpawnPoints, FindTakenPositions(Tag.Cheese), count)) {
             var cheese = Instantiate(cheesePrefab, spawnPoint.localPosition, Quaternion.identity);
 
             cheese.transform.Rotate(0, 0, Random.Range(0f, 360f));
             cheese.transform.SetParent(transform, false);
+
+            yield return new WaitForSeconds(spawnDelay);
         }
     }
-
-    public void GeneratePowerUp() {
-        var spawnPoint = RandomFreeSpaces(powerUpSpawnPoints, FindTakenPositions(Tag.PowerUp)).First();
-        var powerUp = Instantiate(GetRandomPowerUp(), spawnPoint.localPosition, Quaternion.identity);
-
-        powerUp.transform.Rotate(0, 0, Random.Range(0f, 360f));
-        powerUp.transform.SetParent(transform, false);
-    }
-
-    private GameObject GetRandomPowerUp() => powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)];
 
     private IEnumerable<Transform> RandomFreeSpaces(IEnumerable<Transform> list, IEnumerable<Vector3> taken, int count = 1) =>
         list.Where(e => taken.FirstOrDefault(t => e.position == t) == Vector3.zero).OrderBy(_ => Random.value).Take(count);
 
-    public IEnumerable<Vector3> FindTakenPositions(string tag) =>
-        Children.Where(e => e.CompareTag(tag)).Select(e => e.transform.position);
+    public IEnumerable<Vector3> FindTakenPositions(string tag) => FindChildrenWithTag(tag).Select(e => e.transform.position);
+
+    public IEnumerable<Transform> FindChildrenWithTag(string tag) => Children.Where(e => e.CompareTag(tag));
 
     public List<Transform> Children {
         get {
             List<Transform> list = new();
             foreach (Transform item in transform) list.Add(item);
             return list;
+        }
+    }
+
+    private IEnumerator ShowPowerUps() {
+        yield return new WaitForSeconds(spawnDelay * 2.5f);
+
+        foreach (var powerUp in powerUps) {
+            powerUp.SetActive(true);
+            yield return new WaitForSeconds(spawnDelay);
         }
     }
 
@@ -91,13 +104,12 @@ public class RoomScript : MonoBehaviour {
 
             if (value) return;
 
-            //GenerateCheese(Random.Range(minCheese, maxCheese));
-            for (int i = 0; i < Random.Range(minCheese, maxCheese); i++)
-                Invoke(nameof(GenerateOneCheese), i * 0.5f);
+            GenerateCheese(Random.Range(minCheese, maxCheese));
+            //for (int i = 0; i < Random.Range(minCheese, maxCheese); i++)
+            //    Invoke(nameof(GenerateOneCheese), i * spawnDelay);
 
             InvokeRepeating(nameof(GenerateCheeseIfPlayerIsCloseEnough), cheeseDelay, cheeseRate);
-            if (powerUpPrefabs.Length > 0) // TODO: usuñ ifa jak dodasz prefaby powerupów!!!
-                InvokeRepeating(nameof(GeneratePowerUp), powerUpDelay, powerUpRate);
+            StartCoroutine(nameof(ShowPowerUps));
 
             var roomba = Children.Find(e => e.CompareTag(Tag.Roomba)).gameObject;
             if (Random.value > roombaChance)
