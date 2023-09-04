@@ -84,11 +84,11 @@ public class FollowMouseScript : MonoBehaviour {
             gameManagerScript.AddScore(10);
 
         }
-        else if (obj.CompareTag(Tag.Miotla)) {
+        else if (obj.CompareTag(Tag.Miotla) && !isStunned && !isGod) {
             gameManagerScript.CheeseBarRemoveHeal(15);
             SetMouseToStun();
         }
-        else if (obj.CompareTag(Tag.Roomba) && obj.GetComponent<RoombaScript>().Roomb()) {
+        else if (obj.CompareTag(Tag.Roomba) && !isStunned && !isGod && obj.GetComponent<RoombaScript>().Roomb()) {
             gameManagerScript.CheeseBarRemoveHeal(5);
             SetMouseToStun();
         }
@@ -138,7 +138,7 @@ public class FollowMouseScript : MonoBehaviour {
     }
 
     public void SetMouseToStun() {
-        if (isGod) return;
+        if (isGod || isStunned) return;
         isStunned = true;
         mouse_animator.Play(Animations.MouseGetStuned);
         rigidbody.velocity = Vector2.zero;
