@@ -4287,7 +4287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3553650407076901347, guid: 394f8ed6e5508594891ae493a9311dde, type: 3}
       propertyPath: type
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3553650407076901347, guid: 394f8ed6e5508594891ae493a9311dde, type: 3}
       propertyPath: randomType
