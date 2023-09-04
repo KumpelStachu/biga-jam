@@ -25,15 +25,14 @@ public class AudioManagerScript : MonoBehaviour {
     public void StopMusic() {
         foreach (Sound s in sounds) s.source.Pause();
         StartCoroutine(nameof(StopMusicInner));
-        Play("gameover");
     }
 
     private IEnumerator StopMusicInner() {
-        while (music.pitch > 0.001f) {
-            music.pitch /= 1.001f;
-            music.volume /= 1.001f;
+        while (music.volume > 0.001f) {
+            music.pitch /= 1.01f;
+            music.volume /= 1.015f;
 
-            yield return new WaitForSecondsRealtime(0.1f);
+            yield return new WaitForSecondsRealtime(1 / 60f);
         }
 
         music.Stop();

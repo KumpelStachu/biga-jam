@@ -20,7 +20,7 @@ public class CheeseBarScript : MonoBehaviour {
     private void Update() {
         health -= cheeseBarSpeed * Time.deltaTime;
         if (health > maxhealth) health = maxhealth;
-        if (health <= 0) {
+        if (health <= 0 && Time.timeScale != 0) {
             health = 0;
             gameManagerScript.GameOverShow();
         }

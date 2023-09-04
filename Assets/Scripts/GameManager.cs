@@ -89,9 +89,9 @@ public class GameManager : MonoBehaviour {
 
         highScoreText.text = $"High Score: {high}";
 
+        audioManager.Play("gameover");
         audioManager.StopMusic();
         GameOverHolder.SetActive(true);
-        mouseScript.SetMouseToStun();
         Time.timeScale = 0;
     }
 

@@ -23,11 +23,13 @@ public class FollowMouseScript : MonoBehaviour {
     [SerializeField] private float trapDelay = 5;
     [SerializeField] private float trapMultiplier = 0.975f;
 
+    private AudioManagerScript audioManager;
     public const int maxCheese = 3;
     private Vector2 moveDirection = Vector2.zero;
     public bool isGod, isSpeeed;
 
     void Start() {
+        audioManager = FindObjectOfType<AudioManagerScript>();
         StartCoroutine(nameof(SpawnTrap));
     }
 
@@ -143,6 +145,8 @@ public class FollowMouseScript : MonoBehaviour {
 
     public void SetMouseToStun() {
         if (isGod || isStunned) return;
+
+        audioManager.Play("stun");
         isStunned = true;
         mouse_animator.Play(Animations.MouseGetStuned);
         rigidbody.velocity = Vector2.zero;

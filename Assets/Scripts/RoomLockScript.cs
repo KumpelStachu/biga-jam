@@ -7,10 +7,13 @@ public class RoomLockScript : MonoBehaviour {
     [Range(1, 9)][SerializeField] private int goalMin = 3;
     [Range(1, 9)][SerializeField] private int goalMax = 9;
 
+    private AudioManagerScript audioManager;
+
     private int goal;
     private int current;
 
     public void Start() {
+        audioManager = FindObjectOfType<AudioManagerScript>();
         goal = Random.Range(goalMin, goalMax + 1);
         UpdateCount();
     }
@@ -29,6 +32,7 @@ public class RoomLockScript : MonoBehaviour {
     public void UpdateCount() {
         if (current >= goal) {
             GetComponent<BoxCollider2D>().enabled = false;
+            audioManager.Play("door");
             roomLockedAnimator.Play(Animations.LockRoomUnlocked);
         }
 
