@@ -31,7 +31,8 @@ public class RoomLockScript : MonoBehaviour {
 
     public void UpdateCount() {
         if (current >= goal) {
-            GetComponent<BoxCollider2D>().enabled = false;
+            foreach (var collider in GetComponents<BoxCollider2D>())
+                collider.enabled = false;
             audioManager.Play("door");
             roomLockedAnimator.Play(Animations.LockRoomUnlocked);
         }
