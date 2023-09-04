@@ -25,6 +25,7 @@ public class AudioManagerScript : MonoBehaviour {
     public void StopMusic() {
         foreach (Sound s in sounds) s.source.Pause();
         StartCoroutine(nameof(StopMusicInner));
+        Play("gameover");
     }
 
     private IEnumerator StopMusicInner() {

@@ -628,11 +628,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Bum
-    clip: {fileID: 8300000, guid: 74657bd1f392d5a48aca75b5661ffc78, type: 3}
-    volume: 1
-    pitch: 0.68
-    source: {fileID: 0}
   - name: pop
     clip: {fileID: 8300000, guid: c9a1c2f957c614846809f10140472415, type: 3}
     volume: 1
@@ -640,17 +635,22 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: trap
     clip: {fileID: 8300000, guid: 17a2e1c0c05819d4c95fcffabfdba254, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-  - name: szur
-    clip: {fileID: 8300000, guid: a1f1b0478c9158147ad2cd2fe6602139, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     source: {fileID: 0}
   - name: gameover
     clip: {fileID: 8300000, guid: 668501215b96255468bfc471ab0bd722, type: 3}
     volume: 1
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: stun
+    clip: {fileID: 8300000, guid: ff80183533f616e41b571d2789e4b432, type: 3}
+    volume: 0.1
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: door
+    clip: {fileID: 8300000, guid: 7523c4a0757cc2644acc69a56a170deb, type: 3}
+    volume: 0.6
     pitch: 1
     source: {fileID: 0}
   music: {fileID: 344466169}
@@ -1200,7 +1200,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.075
+  orthographic size: 1.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

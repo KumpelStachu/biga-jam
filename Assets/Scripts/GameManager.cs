@@ -89,7 +89,6 @@ public class GameManager : MonoBehaviour {
 
         highScoreText.text = $"High Score: {high}";
 
-        audioManager.Play("gameover");
         audioManager.StopMusic();
         GameOverHolder.SetActive(true);
         Time.timeScale = 0;

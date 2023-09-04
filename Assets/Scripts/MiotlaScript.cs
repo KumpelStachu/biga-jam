@@ -13,7 +13,6 @@ public class MiotlaScript : MonoBehaviour {
     }
 
     void Start() {
-        FindObjectOfType<AudioManagerScript>().Play("szur");
         Invoke(nameof(DestroyMiotla), lifespan);
     }
 
