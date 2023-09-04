@@ -32,6 +32,9 @@ public class LevelGeneraion : MonoBehaviour {
         rooms[gridSizeX, gridSizeY] = new(Vector2.zero, 0);
         takenPositions.Insert(0, Vector2.zero);
 
+        rooms[gridSizeX - 1, gridSizeY] = new(Vector2.left, 1);
+        takenPositions.Insert(0, Vector2.left);
+
         float randomCompareStart = 0.2f, randomCompareEnd = 0.01f;
 
         for (int i = 0; i < numberOfRooms - 1; i++) {
