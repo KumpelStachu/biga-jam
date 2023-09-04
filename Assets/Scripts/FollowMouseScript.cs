@@ -35,8 +35,8 @@ public class FollowMouseScript : MonoBehaviour {
 
     void Update() {
         if (isStunned) return;
-
-        mouse_particle.Play();
+        
+        if(!mouse_particle.isPlaying) mouse_particle.Play();
 
         if (!isDashing && cheeseCounter == maxCheese && Input.GetKeyDown(KeyCode.Space)) {
             cheeseCounter = 0;

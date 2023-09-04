@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject GameOverHolder;
     [SerializeField] private GameObject MiotlaHolder;
     [SerializeField] private GameObject mouse;
+    [SerializeField] private ParticleSystem mouse_particle;
+    [SerializeField] private Color mouse_particle_color_1;
+    [SerializeField] private Color mouse_particle_color_2;
+    [SerializeField] private Sprite mouse_shielded;
+    [SerializeField] private Sprite mouse_normal_sprite;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text highScoreText;
     [SerializeField] private TMP_Text cheeseTextHolder;
@@ -58,22 +63,32 @@ public class GameManager : MonoBehaviour {
 
     public void ShowSpeeed(float time) {
         // TODO: show speeed bar
-
+        var main = mouse_particle.main;
+        main.startColor = mouse_particle_color_1;
+        var em = mouse_particle.emission;
+        em.rateOverTime = 70f;
         Invoke(nameof(HideSpeeed), time);
     }
 
     public void ShowGod(float time) {
-        // TODO: show god bar
+        mouse.GetComponent<Animator>().Play("Mouse_god_mode");
+        var main = mouse_particle.main;
+        main.startColor = Color.magenta;
 
         Invoke(nameof(HideGod), time);
     }
 
     public void HideSpeeed() {
-        // TODO: hide speeed bar
+        var main = mouse_particle.main;
+        main.startColor = mouse_particle_color_2;
+        var em = mouse_particle.emission;
+        em.rateOverTime = 20f;
     }
 
     public void HideGod() {
-        // TODO: hide god bar
+        mouse.GetComponent<Animator>().Play("Mouse_empty");
+        var main = mouse_particle.main;
+        main.startColor = mouse_particle_color_2;
     }
 
     public void GameOverShow() {
