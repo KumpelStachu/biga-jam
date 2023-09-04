@@ -14,6 +14,7 @@ public class PowerUpScript : MonoBehaviour {
     [SerializeField] private Sprite[] holders;
     [SerializeField] private Sprite[] icons;
     [SerializeField] private SpriteRenderer holderRenderer, iconRenderer;
+    [SerializeField] private Animator animator;
 
     private CheeseBarScript cheeseBarScript;
     private FollowMouseScript mouseScript;
@@ -63,10 +64,9 @@ public class PowerUpScript : MonoBehaviour {
                 break;
         }
 
-        // TODO: animate powerup \|/
-        //GetComponent<Animator>().Play("PowerUpAnimation");
+        animator.Play("PowerUpExit");
         GetComponent<CircleCollider2D>().enabled = false;
-        Invoke(nameof(CommitSuicide), 1);
+        Invoke(nameof(CommitSuicide), 1 / 3f);
     }
 
     public void CommitSuicide() {

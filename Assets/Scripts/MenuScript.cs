@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour {
-
     [SerializeField] private Animator menu_animator;
     [SerializeField] private GameObject OptionsHolder;
 
@@ -17,33 +14,28 @@ public class MenuScript : MonoBehaviour {
     }
 
     public void ButtonStart() {
-        menu_animator.Play("Main_menu");
-        mouse_animator.Play("Mouse_run");
-        clouds_animator.Play("Clouds_exit");
-        Invoke("MenuTransition", 1f); 
+        menu_animator.Play(Animations.MainMenu);
+        mouse_animator.Play(Animations.MouseRun);
+        clouds_animator.Play(Animations.CloudsExit);
+        Invoke(nameof(MenuTransition), 1f);
         Invoke(nameof(Start_game), 1.5f);
     }
 
-    private void MenuTransition()
-    {
-        Transition_animator.Play("MenuTransition");
+    private void MenuTransition() {
+        Transition_animator.Play(Animations.MenuTransition);
     }
     public void Start_game() {
-        //SceneManager.UnloadSceneAsync("MainScene");
         SceneManager.LoadScene("SampleScene");
     }
 
-    public void OptionsLoad()
-    {
+    public void OptionsLoad() {
         OptionsHolder.SetActive(true);
     }
-    public void OptionsExit()
-    {
+    public void OptionsExit() {
         OptionsHolder.SetActive(false);
     }
 
-    public void ExitGame()
-    {
+    public void ExitGame() {
         Application.Quit();
     }
 

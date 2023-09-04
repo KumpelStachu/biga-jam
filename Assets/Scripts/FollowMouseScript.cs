@@ -140,7 +140,7 @@ public class FollowMouseScript : MonoBehaviour {
     public void SetMouseToStun() {
         if (isGod) return;
         isStunned = true;
-        mouse_animator.Play("Mouse_get_stuned");
+        mouse_animator.Play(Animations.MouseGetStuned);
         rigidbody.velocity = Vector2.zero;
         CancelInvoke(nameof(RemoveMouseStun));
         Invoke(nameof(RemoveMouseStun), 1.41f);

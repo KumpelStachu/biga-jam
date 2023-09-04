@@ -28,7 +28,8 @@ public class RoomLockScript : MonoBehaviour {
 
     public void UpdateCount() {
         if (current >= goal) {
-            roomLockedAnimator.Play("LockRoom_unlocked");
+            GetComponent<BoxCollider2D>().enabled = false;
+            roomLockedAnimator.Play(Animations.LockRoomUnlocked);
         }
 
         foreach (var counter in counters)

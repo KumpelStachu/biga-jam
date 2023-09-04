@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RoombaScript : MonoBehaviour {
@@ -32,8 +31,7 @@ public class RoombaScript : MonoBehaviour {
         if (!isActive) return false;
 
         isActive = false;
-        // hide_spikes()
-        Roomba_animator.Play("Roomba_off");
+        Roomba_animator.Play(Animations.RoombaOff);
         Invoke(nameof(UnRoomb), cooldown);
 
         return true;
@@ -41,8 +39,6 @@ public class RoombaScript : MonoBehaviour {
 
     public void UnRoomb() {
         isActive = true;
-        // show_spikes()
-        Roomba_animator.Play("Roomba_on");
-        
+        Roomba_animator.Play(Animations.RoombaOn);
     }
 }

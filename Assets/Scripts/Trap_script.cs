@@ -14,14 +14,14 @@ public class Trap_script : MonoBehaviour {
         followMouseScript = GameObject.FindGameObjectWithTag(Tag.Mouse).GetComponent<FollowMouseScript>();
         Invoke(nameof(SetCoolDownOff), trapCooldown);
         Invoke(nameof(SuicideTrap), trapSuicide);
-        trapAnimator.Play("Mouse_trap_drop");
+        trapAnimator.Play(Animations.MouseTrapDrop);
     }
 
     void OnTriggerStay2D(Collider2D col) {
         if (col.gameObject.CompareTag(Tag.Mouse) && isReady) {
             isReady = false;
             followMouseScript.SetMouseToStun();
-            trapAnimator.Play("Mouse_trap_turn_on");
+            trapAnimator.Play(Animations.MouseTrapTurnOn);
             audioSource.Play();
             Invoke(nameof(DestroyTrap), 1f);
         }
@@ -32,7 +32,7 @@ public class Trap_script : MonoBehaviour {
     }
 
     void SuicideTrap() {
-        trapAnimator.Play("Mouse_trap_turn_on");
+        trapAnimator.Play(Animations.MouseTrapTurnOn);
         Invoke(nameof(DestroyTrap), 0.25f);
     }
 

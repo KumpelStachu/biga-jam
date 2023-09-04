@@ -26,7 +26,7 @@ public class RoomScript : MonoBehaviour {
     private GameObject mouse;
 
     public void Start() {
-        mouse = GameObject.FindGameObjectWithTag("Mouse");
+        mouse = GameObject.FindGameObjectWithTag(Tag.Mouse);
 
         foreach (var item in optionalDecoration.OrderBy(_ => Random.value).Take(Random.Range(optionalDecoration.Length / 4, optionalDecoration.Length * 3 / 4)))
             Destroy(item);
@@ -45,7 +45,7 @@ public class RoomScript : MonoBehaviour {
     }
 
     public void GenerateCheese(int count = 1) {
-        foreach (var spawnPoint in RandomFreeSpaces(cheeseSpawnPoints, FindTakenPositions("cheese"), count)) {
+        foreach (var spawnPoint in RandomFreeSpaces(cheeseSpawnPoints, FindTakenPositions(Tag.Cheese), count)) {
             var cheese = Instantiate(cheesePrefab, spawnPoint.localPosition, Quaternion.identity);
 
             cheese.transform.Rotate(0, 0, Random.Range(0f, 360f));
@@ -54,7 +54,7 @@ public class RoomScript : MonoBehaviour {
     }
 
     public void GeneratePowerUp() {
-        var spawnPoint = RandomFreeSpaces(powerUpSpawnPoints, FindTakenPositions("powerup")).First();
+        var spawnPoint = RandomFreeSpaces(powerUpSpawnPoints, FindTakenPositions(Tag.PowerUp)).First();
         var powerUp = Instantiate(GetRandomPowerUp(), spawnPoint.localPosition, Quaternion.identity);
 
         powerUp.transform.Rotate(0, 0, Random.Range(0f, 360f));
@@ -93,7 +93,7 @@ public class RoomScript : MonoBehaviour {
 
             //GenerateCheese(Random.Range(minCheese, maxCheese));
             for (int i = 0; i < Random.Range(minCheese, maxCheese); i++)
-                Invoke(nameof(GenerateOneCheese), i * 0.2f);
+                Invoke(nameof(GenerateOneCheese), i * 0.5f);
 
             InvokeRepeating(nameof(GenerateCheeseIfPlayerIsCloseEnough), cheeseDelay, cheeseRate);
             if (powerUpPrefabs.Length > 0) // TODO: usuñ ifa jak dodasz prefaby powerupów!!!
