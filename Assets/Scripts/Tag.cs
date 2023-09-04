@@ -9,6 +9,7 @@ public class Tag {
     public const string PowerUp = "powerup";
     public const string CheeseBar = "cheesebar";
     public const string GameManager = "gamemanager";
+    public const string AudioManager = "audiomanager";
 
     private Tag() { }
 }

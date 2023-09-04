@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
         Transition_animator.Play("MenuTransition_back");
         cheeseTextHolder.text = $"0/{FollowMouseScript.maxCheese}";
         mouseScript = mouse.GetComponent<FollowMouseScript>();
-        FindObjectOfType<AudioManagerScript>().Play("Bum");
+
         UpdateScore();
         StartCoroutine(nameof(SpawnMiotla));
     }

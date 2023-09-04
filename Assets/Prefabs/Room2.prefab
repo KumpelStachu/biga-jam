@@ -452,6 +452,39 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.75, y: 1.72}
   m_EdgeRadius: 0
+--- !u!1 &726365959540231376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1310718564706514233}
+  m_Layer: 0
+  m_Name: PowerUpPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1310718564706514233
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726365959540231376}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4464990066105650109}
+  - {fileID: 5913273042592107766}
+  m_Father: {fileID: 2183718494759130774}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &828868154233654185
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,6 +774,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2075578766422797019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5913273042592107766}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: aac74bcd78b63da41a9872f3fc818bce, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5913273042592107766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075578766422797019}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.01, y: -3.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1310718564706514233}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2704791122621670454
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,6 +967,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7773335617674397784}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3668262332742741050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4464990066105650109}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: aac74bcd78b63da41a9872f3fc818bce, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4464990066105650109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668262332742741050}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7, y: 1.44, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1310718564706514233}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4381021477387192356
@@ -1887,6 +1982,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7773335617674397784}
+  - {fileID: 1310718564706514233}
   - {fileID: 4130162432834982336}
   - {fileID: 5185682300581807418}
   - {fileID: 2606116099936408312}
@@ -2022,8 +2118,9 @@ MonoBehaviour:
   - {fileID: 4095797483978095220}
   - {fileID: 3925317803708757041}
   - {fileID: 1426035736150637776}
-  powerUpSpawnPoints: []
-  powerUpPrefabs: []
+  powerUpSpawnPoints:
+  - {fileID: 4464990066105650109}
+  - {fileID: 5913273042592107766}
   optionalDecoration:
   - {fileID: 624449819973143384}
   - {fileID: 4497362840202636051}
@@ -2032,6 +2129,7 @@ MonoBehaviour:
   - {fileID: 7823057580591289262}
   - {fileID: 1160381174424928308}
   - {fileID: 611407314027106402}
+  powerUpPrefab: {fileID: 2683763372755303203, guid: 394f8ed6e5508594891ae493a9311dde, type: 3}
   cheesePrefab: {fileID: 719101835667228803, guid: b27eb34babb29394cb426f6bffafa26c, type: 3}
   doorPrefab: {fileID: 8215164495141447877, guid: 8cc01a3b35385504d84fd0bd9fc73862, type: 3}
   wallTop: {fileID: 1720123104729930267}
@@ -2044,9 +2142,8 @@ MonoBehaviour:
   maxDistance: 20
   cheeseDelay: 10
   cheeseRate: 7
-  powerUpDelay: 30
-  powerUpRate: 20
   roombaChance: 0.5
+  spawnDelay: 0.5
 --- !u!1 &7823057580591289262
 GameObject:
   m_ObjectHideFlags: 0

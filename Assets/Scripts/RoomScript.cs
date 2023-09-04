@@ -7,6 +7,7 @@ public class RoomScript : MonoBehaviour {
     [SerializeField] private Transform[] cheeseSpawnPoints;
     [SerializeField] private Transform[] powerUpSpawnPoints;
     [SerializeField] private GameObject[] optionalDecoration;
+    [SerializeField] private GameObject powerUpPrefab;
     [SerializeField] private GameObject cheesePrefab;
     [SerializeField] private GameObject doorPrefab;
     [SerializeField] private GameObject wallTop;
@@ -19,18 +20,10 @@ public class RoomScript : MonoBehaviour {
     [SerializeField] private float maxDistance = 20;
     [SerializeField] private float cheeseDelay = 10;
     [SerializeField] private float cheeseRate = 7;
-    [SerializeField] private float powerUpDelay = 30;
-    [SerializeField] private float powerUpRate = 20;
     [Range(0, 1)][SerializeField] private float roombaChance = 0.5f;
     [SerializeField] private float spawnDelay = 0.5f;
 
     private GameObject mouse;
-    private GameObject[] powerUps;
-
-    public void Awake() {
-        powerUps = FindChildrenWithTag(Tag.PowerUp).Select(e => e.gameObject).ToArray();
-        foreach (var powerUp in powerUps) powerUp.SetActive(false);
-    }
 
     public void Start() {
         mouse = GameObject.FindGameObjectWithTag(Tag.Mouse);
@@ -56,6 +49,8 @@ public class RoomScript : MonoBehaviour {
     }
 
     private IEnumerator GenerateCheeseInner(int count = 1) {
+        yield return new WaitForSeconds(spawnDelay * 2);
+
         foreach (var spawnPoint in RandomFreeSpaces(cheeseSpawnPoints, FindTakenPositions(Tag.Cheese), count)) {
             var cheese = Instantiate(cheesePrefab, spawnPoint.localPosition, Quaternion.identity);
 
@@ -84,8 +79,10 @@ public class RoomScript : MonoBehaviour {
     private IEnumerator ShowPowerUps() {
         yield return new WaitForSeconds(spawnDelay * 2.5f);
 
-        foreach (var powerUp in powerUps) {
-            powerUp.SetActive(true);
+        foreach (var spawnPoint in powerUpSpawnPoints) {
+            var powerUp = Instantiate(powerUpPrefab, spawnPoint.localPosition, Quaternion.identity);
+            powerUp.transform.SetParent(transform, false);
+
             yield return new WaitForSeconds(spawnDelay);
         }
     }
@@ -105,14 +102,11 @@ public class RoomScript : MonoBehaviour {
             if (value) return;
 
             GenerateCheese(Random.Range(minCheese, maxCheese));
-            //for (int i = 0; i < Random.Range(minCheese, maxCheese); i++)
-            //    Invoke(nameof(GenerateOneCheese), i * spawnDelay);
-
             InvokeRepeating(nameof(GenerateCheeseIfPlayerIsCloseEnough), cheeseDelay, cheeseRate);
             StartCoroutine(nameof(ShowPowerUps));
 
             var roomba = Children.Find(e => e.CompareTag(Tag.Roomba)).gameObject;
-            if (Random.value > roombaChance)
+            if (Random.value < roombaChance)
                 roomba.SetActive(true);
             else Destroy(roomba);
         }

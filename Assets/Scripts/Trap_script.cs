@@ -1,15 +1,17 @@
 using UnityEngine;
 
 public class Trap_script : MonoBehaviour {
-    [SerializeField] private FollowMouseScript followMouseScript;
     [SerializeField] private float trapCooldown;
     [SerializeField] private float trapSuicide;
     [SerializeField] private bool isReady;
     [SerializeField] private Animator trapAnimator;
-    [SerializeField] private AudioSource audioSource;
+
+    private FollowMouseScript followMouseScript;
+    private AudioManagerScript audioManger;
 
     void Start() {
         followMouseScript = GameObject.FindGameObjectWithTag(Tag.Mouse).GetComponent<FollowMouseScript>();
+        audioManger = FindObjectOfType<AudioManagerScript>();
         Invoke(nameof(SetCoolDownOff), trapCooldown);
         Invoke(nameof(SuicideTrap), trapSuicide);
         trapAnimator.Play(Animations.MouseTrapDrop);
@@ -20,7 +22,7 @@ public class Trap_script : MonoBehaviour {
             isReady = false;
             followMouseScript.SetMouseToStun();
             trapAnimator.Play(Animations.MouseTrapTurnOn);
-            audioSource.Play();
+            audioManger.Play("trap");
             Invoke(nameof(DestroyTrap), 1f);
         }
     }
