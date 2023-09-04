@@ -7,6 +7,7 @@ public class CheeseBarScript : MonoBehaviour {
     [SerializeField] private float health, maxhealth = 100;
     [SerializeField] private GameManager gameManagerScript;
     [SerializeField] private float cheeseBarSpeed = 3f;
+    [SerializeField] private float magicNumber = 0.004f;
 
     public float MaxHealth { get { return maxhealth; } }
 
@@ -29,7 +30,7 @@ public class CheeseBarScript : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        cheeseBarSpeed *= 1 + 0.004f * Time.deltaTime;
+        cheeseBarSpeed *= 1 + magicNumber * Time.deltaTime;
     }
 
     public void Heal(float points) {

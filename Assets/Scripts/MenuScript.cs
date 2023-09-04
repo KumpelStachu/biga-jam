@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour {
     [SerializeField] private Animator menu_animator;
     [SerializeField] private GameObject OptionsHolder;
-
     [SerializeField] private Animator mouse_animator;
     [SerializeField] private Animator clouds_animator;
     [SerializeField] private Animator Transition_animator;
@@ -19,11 +18,13 @@ public class MenuScript : MonoBehaviour {
         clouds_animator.Play(Animations.CloudsExit);
         Invoke(nameof(MenuTransition), 1f);
         Invoke(nameof(Start_game), 1.5f);
+        FindObjectOfType<AudioManagerScript>().Play("start");
     }
 
     private void MenuTransition() {
         Transition_animator.Play(Animations.MenuTransition);
     }
+
     public void Start_game() {
         SceneManager.LoadScene("SampleScene");
     }
@@ -31,6 +32,7 @@ public class MenuScript : MonoBehaviour {
     public void OptionsLoad() {
         OptionsHolder.SetActive(true);
     }
+
     public void OptionsExit() {
         OptionsHolder.SetActive(false);
     }
@@ -38,5 +40,4 @@ public class MenuScript : MonoBehaviour {
     public void ExitGame() {
         Application.Quit();
     }
-
 }
