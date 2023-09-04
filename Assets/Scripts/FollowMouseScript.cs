@@ -24,7 +24,7 @@ public class FollowMouseScript : MonoBehaviour {
     public bool isGod, isSpeeed;
 
     void Start() {
-        InvokeRepeating(nameof(SpawnTrap), 3, 4);
+        InvokeRepeating(nameof(SpawnTrap), 10, 4);
     }
 
     void Update() {

@@ -593,7 +593,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9e007f6992089124ab55335f441ed984, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.339
+  m_Volume: 0.139
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -7214,7 +7214,7 @@ MonoBehaviour:
   cheeseBarScript: {fileID: 317676519}
   miotlaInitialDelay: 6
   miotlaDelay: 8
-  miotlaDelayMultiplier: 0.975
+  miotlaDelayMultiplier: 0.978
   canIDie: 1
   playerScore: 0
 --- !u!4 &1202233606

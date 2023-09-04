@@ -29,7 +29,7 @@ public class CheeseBarScript : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        cheeseBarSpeed *= 1 + 0.005f * Time.deltaTime;
+        cheeseBarSpeed *= 1 + 0.004f * Time.deltaTime;
     }
 
     public void Heal(float points) {
