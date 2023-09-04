@@ -91,9 +91,9 @@ public class RoomScript : MonoBehaviour {
 
             if (value) return;
 
-            GenerateCheese(Random.Range(minCheese, maxCheese));
-            //for (int i = 0; i < Random.Range(minCheese, maxCheese); i++)
-            //    Invoke(nameof(GenerateOneCheese), i * 0.1f);
+            //GenerateCheese(Random.Range(minCheese, maxCheese));
+            for (int i = 0; i < Random.Range(minCheese, maxCheese); i++)
+                Invoke(nameof(GenerateOneCheese), i * 0.2f);
 
             InvokeRepeating(nameof(GenerateCheeseIfPlayerIsCloseEnough), cheeseDelay, cheeseRate);
             if (powerUpPrefabs.Length > 0) // TODO: usuñ ifa jak dodasz prefaby powerupów!!!

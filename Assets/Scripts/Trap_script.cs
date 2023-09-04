@@ -8,18 +8,21 @@ public class Trap_script : MonoBehaviour {
     [SerializeField] private float trapSuicide;
     [SerializeField] private bool isReady;
     [SerializeField] private Animator trapAnimator;
+    [SerializeField] private AudioSource audioSource;
 
     void Start() {
-        followMouseScript = GameObject.FindGameObjectWithTag("Mouse").GetComponent<FollowMouseScript>();
+        followMouseScript = GameObject.FindGameObjectWithTag(Tag.Mouse).GetComponent<FollowMouseScript>();
         Invoke(nameof(SetCoolDownOff), trapCooldown);
         Invoke(nameof(SuicideTrap), trapSuicide);
         trapAnimator.Play("Mouse_trap_drop");
     }
 
     void OnTriggerStay2D(Collider2D col) {
-        if (col.gameObject.CompareTag("Mouse") && isReady == true) {
+        if (col.gameObject.CompareTag(Tag.Mouse) && isReady) {
+            isReady = false;
             followMouseScript.SetMouseToStun();
             trapAnimator.Play("Mouse_trap_turn_on");
+            audioSource.Play();
             Invoke(nameof(DestroyTrap), 1f);
         }
     }
