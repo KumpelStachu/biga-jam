@@ -24,12 +24,22 @@ public class RoomScript : MonoBehaviour {
     [SerializeField] private float spawnDelay = 0.5f;
 
     private GameObject mouse;
+    private AudioManagerScript audioManager;
 
     public void Start() {
+        audioManager = FindObjectOfType<AudioManagerScript>();
         mouse = GameObject.FindGameObjectWithTag(Tag.Mouse);
 
         foreach (var item in optionalDecoration.OrderBy(_ => Random.value).Take(Random.Range(optionalDecoration.Length / 4, optionalDecoration.Length * 3 / 4)))
             Destroy(item);
+    }
+
+    private bool powerupped = false;
+    public void FixedUpdate() {
+        if (Locked || !powerupped || powerUpSpawnPoints.Length == 0) return;
+        if (FindChildrenWithTag(Tag.PowerUp).Count() != 0) return;
+        audioManager.Play("highscore");
+        powerupped = false;
     }
 
     public void OnDrawGizmos() {
@@ -45,19 +55,18 @@ public class RoomScript : MonoBehaviour {
     }
 
     public void GenerateCheese(int count = 1) {
+        if (cheeseSpawnPoints == null || cheeseSpawnPoints.Length == 0) return;
         StartCoroutine(nameof(GenerateCheeseInner), count);
     }
 
     private IEnumerator GenerateCheeseInner(int count = 1) {
-        yield return new WaitForSeconds(spawnDelay * 2);
-
         foreach (var spawnPoint in RandomFreeSpaces(cheeseSpawnPoints, FindTakenPositions(Tag.Cheese), count)) {
+            yield return new WaitForSeconds(spawnDelay);
+
             var cheese = Instantiate(cheesePrefab, spawnPoint.localPosition, Quaternion.identity);
 
             cheese.transform.Rotate(0, 0, Random.Range(0f, 360f));
             cheese.transform.SetParent(transform, false);
-
-            yield return new WaitForSeconds(spawnDelay);
         }
     }
 
@@ -77,14 +86,24 @@ public class RoomScript : MonoBehaviour {
     }
 
     private IEnumerator ShowPowerUps() {
-        yield return new WaitForSeconds(spawnDelay * 2.5f);
-
         foreach (var spawnPoint in powerUpSpawnPoints) {
+            yield return new WaitForSeconds(spawnDelay);
+
             var powerUp = Instantiate(powerUpPrefab, spawnPoint.localPosition, Quaternion.identity);
             powerUp.transform.SetParent(transform, false);
-
-            yield return new WaitForSeconds(spawnDelay);
         }
+        Debug.Log("powerupped");
+        powerupped = true;
+    }
+
+    private void DealWithRoomba() {
+        var roomba = Children.Find(e => e.CompareTag(Tag.Roomba));
+
+        if (roomba == null) return;
+
+        if (Random.value < roombaChance)
+            roomba.gameObject.SetActive(true);
+        else Destroy(roomba.gameObject);
     }
 
     public void GenerateOneCheese() => GenerateCheese();
@@ -104,11 +123,7 @@ public class RoomScript : MonoBehaviour {
             GenerateCheese(Random.Range(minCheese, maxCheese));
             InvokeRepeating(nameof(GenerateCheeseIfPlayerIsCloseEnough), cheeseDelay, cheeseRate);
             StartCoroutine(nameof(ShowPowerUps));
-
-            var roomba = Children.Find(e => e.CompareTag(Tag.Roomba)).gameObject;
-            if (Random.value < roombaChance)
-                roomba.SetActive(true);
-            else Destroy(roomba);
+            DealWithRoomba();
         }
     }
 }
