@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour {
     public Dictionary<Vector2, RoomScript> roomScripts = new();
 
     void Start() {
-        Transition_animator.Play("MenuTransition_back");
+        Transition_animator.Play("GameSceneTransition");
         cheeseTextHolder.text = $"0/{FollowMouseScript.maxCheese}";
         mouseScript = mouse.GetComponent<FollowMouseScript>();
 
@@ -83,19 +83,26 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ResetGame() {
-        Transition_animator.Play(Animations.MenuTransition);
+        Transition_animator.Play("GameSceneTransition_back");
         StartCoroutine(nameof(ResetScene));
     }
 
     public IEnumerator ResetScene() {
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.1f);
 
         Time.timeScale = 1;
         SceneManager.LoadScene("SampleScene");
     }
 
-    public void BackToMainMenu() {
+    public IEnumerator BackToMainMenu() {
+        Transition_animator.Play("GameSceneTransition_back");
+        yield return new WaitForSecondsRealtime(0.1f);
+        
         SceneManager.LoadScene("MainScene");
+    }
+    public void LoadMainMenu()
+    {
+         StartCoroutine(nameof(BackToMainMenu));
     }
 
     public IEnumerator SpawnMiotla() {
