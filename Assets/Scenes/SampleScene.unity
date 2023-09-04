@@ -565,11 +565,6 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
-  - name: trap
-    clip: {fileID: 8300000, guid: 17a2e1c0c05819d4c95fcffabfdba254, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
 --- !u!4 &344466168
 Transform:
   m_ObjectHideFlags: 0
