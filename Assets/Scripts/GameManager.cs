@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject MiotlaHolder;
     [SerializeField] private GameObject mouse;
     [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text highScoreText;
     [SerializeField] private TMP_Text cheeseTextHolder;
     [SerializeField] private Animator scoreTextAnimator;
     [SerializeField] private CheeseBarScript cheeseBarScript;
@@ -77,6 +78,16 @@ public class GameManager : MonoBehaviour {
     public void GameOverShow() {
         if (!canIDie) return;
 
+        var high = PlayerPrefs.GetInt("HighScore", 0);
+
+        if (playerScore > high) {
+            high = playerScore;
+            PlayerPrefs.SetInt("HighScore", high);
+            PlayerPrefs.Save();
+        }
+
+        highScoreText.text = $"High Score: {high}";
+
         GameOverHolder.SetActive(true);
         mouseScript.SetMouseToStun();
         Time.timeScale = 0;
@@ -97,12 +108,11 @@ public class GameManager : MonoBehaviour {
     public IEnumerator BackToMainMenu() {
         Transition_animator.Play("GameSceneTransition_back");
         yield return new WaitForSecondsRealtime(0.1f);
-        
+
         SceneManager.LoadScene("MainScene");
     }
-    public void LoadMainMenu()
-    {
-         StartCoroutine(nameof(BackToMainMenu));
+    public void LoadMainMenu() {
+        StartCoroutine(nameof(BackToMainMenu));
     }
 
     public IEnumerator SpawnMiotla() {

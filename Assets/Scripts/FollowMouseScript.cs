@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -18,13 +19,16 @@ public class FollowMouseScript : MonoBehaviour {
     [SerializeField] private float speeedUpTime = 5;
     [SerializeField] private float speeedUpMultiplier = 2;
     [SerializeField] private float godModeTime = 5;
+    [SerializeField] private float trapElevator = 10;
+    [SerializeField] private float trapDelay = 5;
+    [SerializeField] private float trapMultiplier = 0.975f;
 
     public const int maxCheese = 3;
     private Vector2 moveDirection = Vector2.zero;
     public bool isGod, isSpeeed;
 
     void Start() {
-        InvokeRepeating(nameof(SpawnTrap), 10, 4);
+        StartCoroutine(nameof(SpawnTrap));
     }
 
     void Update() {
@@ -150,8 +154,15 @@ public class FollowMouseScript : MonoBehaviour {
         isStunned = false;
     }
 
-    public void SpawnTrap() {
-        var point = points.ElementAt(Random.Range(0, points.Length));
-        Instantiate(trap_holder, point.position, point.transform.rotation);
+    public IEnumerator SpawnTrap() {
+        yield return new WaitForSeconds(trapElevator);
+
+        while (true) {
+            var point = points.ElementAt(Random.Range(0, points.Length));
+            Instantiate(trap_holder, point.position, point.transform.rotation);
+
+            yield return new WaitForSeconds(trapDelay);
+            trapDelay *= trapMultiplier;
+        }
     }
 }
