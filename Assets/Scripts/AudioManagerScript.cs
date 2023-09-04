@@ -6,8 +6,12 @@ public class AudioManagerScript : MonoBehaviour {
     public Sound[] sounds;
     public AudioSource music;
 
+    private float initialMusicVolume;
+
     void Awake() {
-        foreach (Sound s in sounds) {
+        initialMusicVolume = music.volume;
+
+        foreach (var s in sounds) {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.source.volume = s.volume;
@@ -15,11 +19,20 @@ public class AudioManagerScript : MonoBehaviour {
             s.source.playOnAwake = false;
             s.source.loop = false;
         }
+
+        UpdateVolume();
     }
 
     public void Play(string name) {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Play();
+    }
+
+    public void UpdateVolume() {
+        music.volume = initialMusicVolume * PlayerPrefs.GetFloat("music", 0.5f);
+
+        var volume = PlayerPrefs.GetFloat("effects", 0.5f);
+        foreach (var s in sounds) s.source.volume = s.volume * volume;
     }
 
     public void StopMusic() {

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public enum PowerUpType {
     Speed,
-    Health,
     Timer,
     Points,
     Shield,
@@ -50,9 +49,6 @@ public class PowerUpScript : MonoBehaviour {
             case PowerUpType.Speed:
                 mouseScript.SpeeedUp();
                 break;
-            case PowerUpType.Health:
-                cheeseBarScript.Heal(cheeseBarScript.MaxHealth);
-                break;
             case PowerUpType.Timer:
                 cheeseBarScript.Heal(cheeseBarScript.MaxHealth / 2);
                 break;
@@ -62,6 +58,7 @@ public class PowerUpScript : MonoBehaviour {
             case PowerUpType.Shield:
                 mouseScript.GodMode();
                 break;
+            default: throw new UnityException("AAAAAAAAAAAAAAA!!!!!!!");
         }
 
         animator.Play("PowerUpExit");

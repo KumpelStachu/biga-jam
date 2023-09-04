@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour {
     [SerializeField] private Animator menu_animator;
@@ -7,8 +8,14 @@ public class MenuScript : MonoBehaviour {
     [SerializeField] private Animator mouse_animator;
     [SerializeField] private Animator clouds_animator;
     [SerializeField] private Animator Transition_animator;
+    [SerializeField] private Slider musicSlider;
+    [SerializeField] private Slider effectsSlider;
+    [SerializeField] private AudioManagerScript audioManager;
 
     public void Start() {
+        musicSlider.value = PlayerPrefs.GetFloat("music", 0.5f);
+        effectsSlider.value = PlayerPrefs.GetFloat("effects", 0.5f);
+
         Time.timeScale = 1.0f;
     }
 
@@ -39,5 +46,13 @@ public class MenuScript : MonoBehaviour {
 
     public void ExitGame() {
         Application.Quit();
+    }
+
+    public void SliderChange() {
+        PlayerPrefs.SetFloat("music", musicSlider.value);
+        PlayerPrefs.SetFloat("effects", effectsSlider.value);
+        PlayerPrefs.Save();
+
+        audioManager.UpdateVolume();
     }
 }

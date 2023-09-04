@@ -105,13 +105,11 @@ MonoBehaviour:
   type: 0
   holders:
   - {fileID: 21300000, guid: 802dd85566aeb13498307d9d32ba1b35, type: 3}
-  - {fileID: 21300000, guid: f0aaf190d48224241abbb72ff0e77006, type: 3}
   - {fileID: 21300000, guid: 5c4bff58e847439429e8ac43c78d2063, type: 3}
   - {fileID: 21300000, guid: d982de94bae4dfb45a629261a31036c7, type: 3}
   - {fileID: 21300000, guid: 31e76fbc9f77c274298482834af25351, type: 3}
   icons:
   - {fileID: 21300000, guid: c09b3a570682384459f6dab50da8b439, type: 3}
-  - {fileID: 21300000, guid: 86882949ea2f7a04d906dd384c563beb, type: 3}
   - {fileID: 21300000, guid: 0323047660663594582aa8c5ab857c7e, type: 3}
   - {fileID: 21300000, guid: bdc01ae6b1c35a842a035e0f84cfc938, type: 3}
   - {fileID: 21300000, guid: c3abca56f65054e40ad6acfce3a24ac3, type: 3}
