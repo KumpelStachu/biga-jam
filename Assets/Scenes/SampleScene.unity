@@ -567,6 +567,17 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
+  - name: szur
+    clip: {fileID: 8300000, guid: a1f1b0478c9158147ad2cd2fe6602139, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: gameover
+    clip: {fileID: 8300000, guid: 668501215b96255468bfc471ab0bd722, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  music: {fileID: 344466169}
 --- !u!4 &344466168
 Transform:
   m_ObjectHideFlags: 0
@@ -594,13 +605,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9e007f6992089124ab55335f441ed984, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.139
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1815,7 +1826,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4290312959
-  m_fontColor: {r: 1, g: 0.97921187, b: 0.7216981, a: 1}
+  m_fontColor: {r: 0.968066, g: 1, b: 0.8915094, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7350,6 +7361,7 @@ MonoBehaviour:
   cheeseTextHolder: {fileID: 382026584}
   scoreTextAnimator: {fileID: 1794124366}
   cheeseBarScript: {fileID: 317676519}
+  audioManager: {fileID: 344466167}
   miotlaInitialDelay: 6
   miotlaDelay: 8
   miotlaDelayMultiplier: 0.978

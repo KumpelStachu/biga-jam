@@ -3,6 +3,7 @@ using UnityEngine;
 public class MiotlaScript : MonoBehaviour {
     [SerializeField] private float miotlaSpeed = 10f;
     [SerializeField] private Rigidbody2D miotlaRb;
+    [SerializeField] private float lifespan = 6f;
 
     public int Dir {
         set {
@@ -12,7 +13,8 @@ public class MiotlaScript : MonoBehaviour {
     }
 
     void Start() {
-        Invoke(nameof(DestroyMiotla), 6f);
+        FindObjectOfType<AudioManagerScript>().Play("szur");
+        Invoke(nameof(DestroyMiotla), lifespan);
     }
 
     void DestroyMiotla() {

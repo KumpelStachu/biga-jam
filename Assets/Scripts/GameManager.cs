@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private TMP_Text cheeseTextHolder;
     [SerializeField] private Animator scoreTextAnimator;
     [SerializeField] private CheeseBarScript cheeseBarScript;
+    [SerializeField] private AudioManagerScript audioManager;
     [SerializeField] private float miotlaInitialDelay = 6;
     [SerializeField] private float miotlaDelay = 8;
     [SerializeField] private float miotlaDelayMultiplier = 0.9f;
@@ -88,6 +89,7 @@ public class GameManager : MonoBehaviour {
 
         highScoreText.text = $"High Score: {high}";
 
+        audioManager.StopMusic();
         GameOverHolder.SetActive(true);
         mouseScript.SetMouseToStun();
         Time.timeScale = 0;
@@ -111,6 +113,7 @@ public class GameManager : MonoBehaviour {
 
         SceneManager.LoadScene("MainScene");
     }
+
     public void LoadMainMenu() {
         StartCoroutine(nameof(BackToMainMenu));
     }
