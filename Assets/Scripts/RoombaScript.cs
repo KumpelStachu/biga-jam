@@ -7,6 +7,7 @@ public class RoombaScript : MonoBehaviour {
     [SerializeField] private float maxSpeed = 150;
     [SerializeField] private bool isActive = true;
     [SerializeField] private float cooldown = 5;
+    [SerializeField] private Animator Roomba_animator;
 
     public void Awake() {
         gameObject.SetActive(false);
@@ -32,7 +33,7 @@ public class RoombaScript : MonoBehaviour {
 
         isActive = false;
         // hide_spikes()
-
+        Roomba_animator.Play("Roomba_off");
         Invoke(nameof(UnRoomb), cooldown);
 
         return true;
@@ -41,5 +42,7 @@ public class RoombaScript : MonoBehaviour {
     public void UnRoomb() {
         isActive = true;
         // show_spikes()
+        Roomba_animator.Play("Roomba_on");
+        
     }
 }
