@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour {
     [SerializeField] private GameObject mouse;
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private Vector3 offset = new(0, 0, -10);
     [SerializeField] private float smoothTime = 0.25f;
     [SerializeField] private float cameraSize = 6.1f;
@@ -33,6 +34,7 @@ public class CameraManager : MonoBehaviour {
         var mp = mouse.transform.position + pointer * pointerMultiplier;
         var room = new Vector2(Mathf.RoundToInt(mp.x / roomSize.x), Mathf.RoundToInt(mp.y / roomSize.y));
 
-        transform.position = Vector3.SmoothDamp(transform.position, new Vector3(room.x * roomSize.x, room.y * roomSize.y) + offset, ref currentVelocity, smoothTime);
+        if (gameManager.roomScripts.ContainsKey(room) && !gameManager.roomScripts[room].Locked)
+            transform.position = Vector3.SmoothDamp(transform.position, new Vector3(room.x * roomSize.x, room.y * roomSize.y) + offset, ref currentVelocity, smoothTime);
     }
 }

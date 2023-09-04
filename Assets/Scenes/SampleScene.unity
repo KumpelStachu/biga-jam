@@ -967,10 +967,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouse: {fileID: 2085953185}
+  gameManager: {fileID: 1202233605}
   offset: {x: 0, y: 0, z: -10}
   smoothTime: 0.25
-  cameraSize: 6.05
-  pointerMultiplier: 1.05
+  cameraSize: 6.075
+  pointerMultiplier: 1.1
 --- !u!1 &543311352
 GameObject:
   m_ObjectHideFlags: 0

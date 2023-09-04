@@ -10,8 +10,11 @@ public class LevelGeneraion : MonoBehaviour {
     private Room[,] rooms;
     readonly List<Vector2> takenPositions = new();
     private int gridSizeX, gridSizeY;
+    private GameManager gameManager;
 
     void Start() {
+        gameManager = GetComponent<GameManager>();
+
         if (numberOfRooms >= worldSize.x * 2 * worldSize.y * 2) {
             numberOfRooms = Mathf.RoundToInt(worldSize.x * 2 * worldSize.y * 2);
         }
@@ -86,7 +89,7 @@ public class LevelGeneraion : MonoBehaviour {
             roomScript.DoorLeft = room.doorLeft;
             roomScript.Locked = room.type != 0;
 
-            if (room.type == 0) roomScript.GenerateCheese();
+            gameManager.roomScripts.Add(room.position, roomScript);
         }
     }
 

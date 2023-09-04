@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
     [SerializeField] private Animator Transition_animator;
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour {
 
     private FollowMouseScript mouseScript;
     public int playerScore;
+    public Dictionary<Vector2, RoomScript> roomScripts = new();
 
     void Start() {
         Transition_animator.Play("MenuTransition_back");

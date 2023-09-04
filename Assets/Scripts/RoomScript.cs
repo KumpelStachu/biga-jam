@@ -85,6 +85,7 @@ public class RoomScript : MonoBehaviour {
     public bool DoorRight { set { wallRight.SetActive(!value); } }
 
     public bool Locked {
+        get { return roomLock.activeSelf; }
         set {
             roomLock.SetActive(value);
 
