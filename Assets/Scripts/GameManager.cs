@@ -82,10 +82,13 @@ public class GameManager : MonoBehaviour {
 
     public void ResetGame() {
         Transition_animator.Play("MenuTransition");
-        Invoke("ResetScene", 1f);
+        StartCoroutine(nameof(ResetScene));
     }
-    public void ResetScene() {
-        Debug.Log("siema");
+
+    public IEnumerator ResetScene() {
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        Time.timeScale = 1;
         SceneManager.LoadScene("SampleScene");
     }
 
@@ -98,7 +101,7 @@ public class GameManager : MonoBehaviour {
 
         while (true) {
             var miotla = Instantiate(MiotlaHolder);
-            float r = UnityEngine.Random.Range(Camera.main.transform.position.y - 5f, Camera.main.transform.position.y + 5f);
+            float r = Random.Range(Camera.main.transform.position.y - 5f, Camera.main.transform.position.y + 5f);
             var dir = Camera.main.transform.position.x < mouse.transform.position.x ? 1 : -1;
             miotla.transform.localPosition = new Vector2(Camera.main.transform.position.x + 20f * -dir, r);
             miotla.GetComponent<MiotlaScript>().Dir = dir;

@@ -43,6 +43,8 @@ public class PowerUpScript : MonoBehaviour {
     }
 
     public void Activate() {
+        if (!mouseScript.CanIPower(type)) return;
+
         switch (type) {
             case PowerUpType.Speed:
                 mouseScript.SpeeedUp();

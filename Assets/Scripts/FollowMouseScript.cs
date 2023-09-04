@@ -94,13 +94,18 @@ public class FollowMouseScript : MonoBehaviour {
             gameManagerScript.CheeseBarRemoveHeal(5);
             SetMouseToStun();
         }
-        else if (obj.CompareTag(Tag.PowerUp) && CanIPower()) {
+        else if (obj.CompareTag(Tag.PowerUp)) {
             obj.GetComponent<PowerUpScript>().Activate();
         }
     }
 
-    private bool CanIPower() {
-        return !isStunned && !isSpeeed && !isGod;
+    public bool CanIPower(PowerUpType type) {
+        if (isStunned) return false;
+
+        if (type == PowerUpType.Speed) return !isSpeeed;
+        if (type == PowerUpType.Shield) return !isGod;
+
+        return true;
     }
 
     public void SpeeedUp() {
