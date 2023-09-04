@@ -34,14 +34,6 @@ public class RoomScript : MonoBehaviour {
             Destroy(item);
     }
 
-    private bool powerupped = false;
-    public void FixedUpdate() {
-        if (Locked || !powerupped || powerUpSpawnPoints.Length == 0) return;
-        if (FindChildrenWithTag(Tag.PowerUp).Count() != 0) return;
-        audioManager.Play("highscore");
-        powerupped = false;
-    }
-
     public void OnDrawGizmos() {
         if (mouse == null || Vector2.Distance(transform.position, mouse.transform.position) > maxDistance) return;
 
@@ -92,8 +84,6 @@ public class RoomScript : MonoBehaviour {
             var powerUp = Instantiate(powerUpPrefab, spawnPoint.localPosition, Quaternion.identity);
             powerUp.transform.SetParent(transform, false);
         }
-        Debug.Log("powerupped");
-        powerupped = true;
     }
 
     private void DealWithRoomba() {
