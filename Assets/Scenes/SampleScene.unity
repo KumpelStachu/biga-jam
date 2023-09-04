@@ -550,10 +550,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+  - name: Bum
+    clip: {fileID: 8300000, guid: 74657bd1f392d5a48aca75b5661ffc78, type: 3}
+    volume: 1
+    pitch: 0.68
     source: {fileID: 0}
 --- !u!4 &344466168
 Transform:

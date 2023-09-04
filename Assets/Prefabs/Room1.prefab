@@ -8431,13 +8431,17 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.038803846
       objectReference: {fileID: 0}
+    - target: {fileID: 1057535379980723298, guid: 7017e3016b2c7a64785082f02068ce1e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1089078840479815511, guid: 7017e3016b2c7a64785082f02068ce1e, type: 3}
       propertyPath: m_Name
       value: RoomLock
       objectReference: {fileID: 0}
     - target: {fileID: 1089078840479815511, guid: 7017e3016b2c7a64785082f02068ce1e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1839504490162111606, guid: 7017e3016b2c7a64785082f02068ce1e, type: 3}
       propertyPath: m_fontSize
