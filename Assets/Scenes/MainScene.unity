@@ -474,6 +474,11 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
+  - name: pop
+    clip: {fileID: 8300000, guid: c9a1c2f957c614846809f10140472415, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
   music: {fileID: 220911437}
 --- !u!4 &220911439
 Transform:
@@ -2252,7 +2257,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1951862426}
         m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
-        m_MethodName: SliderChange
+        m_MethodName: EffectsSliderChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2683,7 +2688,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1951862426}
         m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
-        m_MethodName: SliderChange
+        m_MethodName: MusicSliderChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -13,8 +13,8 @@ public class MenuScript : MonoBehaviour {
     [SerializeField] private AudioManagerScript audioManager;
 
     public void Start() {
-        musicSlider.value = PlayerPrefs.GetFloat("music", 0.5f);
-        effectsSlider.value = PlayerPrefs.GetFloat("effects", 0.5f);
+        musicSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("music", 0.5f));
+        effectsSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("effects", 0.5f));
 
         Time.timeScale = 1.0f;
     }
@@ -48,11 +48,24 @@ public class MenuScript : MonoBehaviour {
         Application.Quit();
     }
 
-    public void SliderChange() {
+    public void MusicSliderChange() {
         PlayerPrefs.SetFloat("music", musicSlider.value);
+        PlayerPrefs.Save();
+
+        audioManager.UpdateVolume();
+    }
+
+    public void EffectsSliderChange() {
         PlayerPrefs.SetFloat("effects", effectsSlider.value);
         PlayerPrefs.Save();
 
         audioManager.UpdateVolume();
+
+        CancelInvoke(nameof(TestSound));
+        Invoke(nameof(TestSound), 0.2f);
+    }
+
+    public void TestSound() {
+        audioManager.Play("start");
     }
 }
