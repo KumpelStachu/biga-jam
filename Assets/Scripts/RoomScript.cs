@@ -15,8 +15,8 @@ public class RoomScript : MonoBehaviour {
     [SerializeField] private GameObject wallLeft;
     [SerializeField] private GameObject wallRight;
     [SerializeField] private GameObject roomLock;
-    [Min(5)][SerializeField] private int minCheese = 5;
-    [Min(6)][SerializeField] private int maxCheese = 10;
+    [SerializeField] private int minCheese = 5;
+    [SerializeField] private int maxCheese = 10;
     [SerializeField] private float maxDistance = 20;
     [SerializeField] private float cheeseDelay = 10;
     [SerializeField] private float cheeseRate = 7;
@@ -98,10 +98,10 @@ public class RoomScript : MonoBehaviour {
 
     public void GenerateOneCheese() => GenerateCheese();
 
-    public bool DoorTop { set { wallTop.SetActive(!value); } }
-    public bool DoorBottom { set { wallBottom.SetActive(!value); } }
-    public bool DoorLeft { set { wallLeft.SetActive(!value); } }
-    public bool DoorRight { set { wallRight.SetActive(!value); } }
+    public bool DoorTop { get { return !wallTop.activeInHierarchy; } set { wallTop.SetActive(!value); } }
+    public bool DoorBottom { get { return !wallBottom.activeInHierarchy; } set { wallBottom.SetActive(!value); } }
+    public bool DoorLeft { get { return !wallLeft.activeInHierarchy; } set { wallLeft.SetActive(!value); } }
+    public bool DoorRight { get { return !wallRight.activeInHierarchy; } set { wallRight.SetActive(!value); } }
 
     public bool Locked {
         get { return roomLock.activeSelf; }

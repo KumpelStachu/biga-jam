@@ -10,6 +10,7 @@ public class Tag {
     public const string CheeseBar = "cheesebar";
     public const string GameManager = "gamemanager";
     public const string AudioManager = "audiomanager";
+    public const string Statue = "statue";
 
     private Tag() { }
 }
