@@ -1,5 +1,4 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class StatueScript : MonoBehaviour {
@@ -24,6 +23,6 @@ public class StatueScript : MonoBehaviour {
     public void Disable() {
         isActive = false;
         GetComponent<BoxCollider2D>().enabled = false;
-        GetComponent<SpriteRenderer>().color = Color.white.WithAlpha(0.4f);
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.4f);
     }
 }
