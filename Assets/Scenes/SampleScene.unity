@@ -7401,11 +7401,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomPrefabs:
   - {fileID: 3619155277808532115, guid: c8ac4e311cd82b34d82bd2656e25d978, type: 3}
-  - {fileID: 6086665186056703039, guid: 59a23b9230968fc449fa5d381cddef97, type: 3}
   - {fileID: 7766327084467649865, guid: dd5182d877fa1a5438454f7d62111136, type: 3}
   - {fileID: 7766327084467649865, guid: f3e685830cdf75b40a2e3de7e881b96f, type: 3}
   - {fileID: 7766327084467649865, guid: 2d10bf4acd7baa645becc217a50f5c26, type: 3}
   - {fileID: 7766327084467649865, guid: c129cf05db8863f44a7e4e5c4414b2cd, type: 3}
+  - {fileID: 6086665186056703039, guid: 59a23b9230968fc449fa5d381cddef97, type: 3}
   worldSize: {x: 11, y: 11}
   numberOfRooms: 300
 --- !u!1 &1203524885

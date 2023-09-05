@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StatueScript : MonoBehaviour {
@@ -10,6 +11,7 @@ public class StatueScript : MonoBehaviour {
 
     public void AddCheese(int count) {
         if (!isActive) return;
+
         statueAnimator.Play("StatueAddCheese");
         cheese += count;
         UpdateCounter();
@@ -21,5 +23,7 @@ public class StatueScript : MonoBehaviour {
 
     public void Disable() {
         isActive = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().color = Color.white.WithAlpha(0.4f);
     }
 }

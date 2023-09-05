@@ -10,6 +10,7 @@ public class TrapRoomScript : MonoBehaviour {
     [SerializeField] private GameObject powerUpPrefab;
     [SerializeField] private Transform[] powerUpSpawnPoints;
     [SerializeField] private float spawnDelay = 0.2f;
+    [SerializeField] private GameObject tutorial;
 
     private AudioManagerScript audioManager;
     private GameManager gameManager;
@@ -57,6 +58,7 @@ public class TrapRoomScript : MonoBehaviour {
         gameManager.AddScore(statueScript.cheese * 10);
         audioManager.Play("door");
 
+        Destroy(tutorial);
         StartCoroutine(nameof(ShowPowerUps));
 
         foreach (var roomba in roombas) Destroy(roomba);
