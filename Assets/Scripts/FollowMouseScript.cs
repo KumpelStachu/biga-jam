@@ -35,8 +35,8 @@ public class FollowMouseScript : MonoBehaviour {
 
     void Update() {
         if (isStunned) return;
-        
-        if(!mouse_particle.isPlaying) mouse_particle.Play();
+
+        if (!mouse_particle.isPlaying) mouse_particle.Play();
 
         if (!isDashing && cheeseCounter == maxCheese && Input.GetKeyDown(KeyCode.Space)) {
             cheeseCounter = 0;
@@ -79,6 +79,11 @@ public class FollowMouseScript : MonoBehaviour {
             cheeseCounter = obj.GetComponent<RoomLockScript>().AddCheese(cheeseCounter);
             gameManagerScript.UpdateCheeseCounter();
             RemoveCheese(maxCheese - cheeseCounter);
+        }
+        else if (obj.CompareTag(Tag.Statue)) {
+            obj.GetComponent<StatueScript>().AddCheese(cheeseCounter);
+            RemoveCheese(cheeseCounter);
+            cheeseCounter = 0;
         }
         else if (obj.CompareTag(Tag.Cheese) && cheeseCounter < maxCheese) {
             obj.transform.SetParent(transform, false);
